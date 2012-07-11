@@ -20,10 +20,11 @@
 
   <xs:complexType name="Authentication">
     <xs:sequence>
-      <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
       <xs:element name="password" type="xs:string" minOccurs="0" maxOccurs="1" />
     </xs:sequence>
   </xs:complexType>
+
+  <!-- SSL Authentication -->
 
   <!-- HTTP Authentication -->
   <xs:simpleType name="HttpAuthenticationScheme">
@@ -41,6 +42,7 @@
     <xs:complexContent>
       <xs:extension base="Authentication">
         <xs:sequence>
+          <xs:element name="username" type="xs:string" minOccurs="1" maxOccurs="1" />
           <xs:element name="scheme" type="HttpAuthenticationScheme" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
       </xs:extension>
