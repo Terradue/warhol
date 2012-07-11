@@ -18,11 +18,7 @@
            targetNamespace="http://www.terradue.com/warhol/settings"
            xmlns="http://www.terradue.com/warhol/settings">
 
-  <xs:complexType name="Authentication">
-    <xs:sequence>
-      <xs:element name="password" type="xs:string" minOccurs="0" maxOccurs="1" />
-    </xs:sequence>
-  </xs:complexType>
+  <xs:complexType name="Authentication" />
 
   <!--
    | SSL Authentication
@@ -34,6 +30,7 @@
           <xs:element name="proxy-certificate" type="xs:string" minOccurs="0" maxOccurs="1" />
           <xs:element name="private-key" type="xs:string" minOccurs="0" maxOccurs="1" />
           <xs:element name="public-certificate" type="xs:string" minOccurs="0" maxOccurs="1" />
+          <xs:element name="password" type="xs:string" minOccurs="0" maxOccurs="0" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -58,7 +55,21 @@
       <xs:extension base="Authentication">
         <xs:sequence>
           <xs:element name="username" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="password" type="xs:string" minOccurs="0" maxOccurs="1" />
           <xs:element name="scheme" type="HttpAuthenticationScheme" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!--
+    | UM-SSO Authentication
+  -->
+  <xs:complexType name="UmSsoAuthentication">
+    <xs:complexContent>
+      <xs:extension base="Authentication">
+        <xs:sequence>
+          <xs:element name="username" type="xs:string" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
