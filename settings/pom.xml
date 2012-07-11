@@ -27,7 +27,7 @@
   <artifactId>warhol-settings</artifactId>
   <packaging>jar</packaging>
 
-  <name>T2 Warhol :: Atom/OpenSearch Feeds APIs</name>
+  <name>T2 Warhol :: Settings APIs</name>
 
   <build>
     <plugins>
