@@ -20,7 +20,7 @@
   <parent>
     <groupId>com.terradue.warhol</groupId>
     <artifactId>warhol-parent</artifactId>
-    <version>0.9-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
@@ -34,16 +34,6 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jaxb2-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>xjc</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <verbose>true</verbose>
-        </configuration>
       </plugin>
     </plugins>
   </build>
