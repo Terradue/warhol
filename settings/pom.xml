@@ -24,7 +24,7 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>warhol-feeds</artifactId>
+  <artifactId>warhol-settings</artifactId>
   <packaging>jar</packaging>
 
   <name>T2 Warhol :: Atom/OpenSearch Feeds APIs</name>
