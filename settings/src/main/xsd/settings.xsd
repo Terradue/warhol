@@ -24,9 +24,24 @@
     </xs:sequence>
   </xs:complexType>
 
-  <!-- SSL Authentication -->
+  <!--
+   | SSL Authentication
+  -->
+  <xs:complexType name="SslAuthentication">
+    <xs:complexContent>
+      <xs:extension base="Authentication">
+        <xs:sequence>
+          <xs:element name="proxy-certificate" type="xs:string" minOccurs="0" maxOccurs="1" />
+          <xs:element name="private-key" type="xs:string" minOccurs="0" maxOccurs="1" />
+          <xs:element name="public-certificate" type="xs:string" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 
-  <!-- HTTP Authentication -->
+  <!--
+    | HTTP Authentication
+  -->
   <xs:simpleType name="HttpAuthenticationScheme">
     <xs:restriction base="xs:string">
       <xs:enumeration value="BASIC" />
