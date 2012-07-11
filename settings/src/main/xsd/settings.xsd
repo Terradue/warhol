@@ -15,8 +15,8 @@
   limitations under the License.
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.terradue.com/warhol"
-           xmlns="http://www.terradue.com/warhol">
+           targetNamespace="http://www.terradue.com/warhol/settings"
+           xmlns="http://www.terradue.com/warhol/settings">
 
   <xs:complexType name="Authentication">
     <xs:sequence>
