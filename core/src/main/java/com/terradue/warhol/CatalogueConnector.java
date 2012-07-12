@@ -20,6 +20,8 @@ import static com.terradue.warhol.lang.Preconditions.checkNotNullArgument;
 
 import org.w3._2005.atom.Feed;
 
+import com.a9.opensearch._11.OpenSearchDescription;
+import com.a9.opensearch._11.OpenSearchUrl;
 import com.sun.jersey.api.client.Client;
 import com.terradue.warhol.settings.Catalogue;
 import com.terradue.warhol.traverse.CatalogueTraverseHandler;
@@ -40,6 +42,11 @@ public final class CatalogueConnector
         restClient = null;
     }
 
+    public OpenSearchDescription getDescription()
+    {
+        return restClient.resource( catalogue.getDescriptionUrl() ).get( OpenSearchDescription.class );
+    }
+
     public CatalogueTraverseHandlerBuilder traverse()
     {
         return new CatalogueTraverseHandlerBuilder()
@@ -50,7 +57,16 @@ public final class CatalogueConnector
             {
                 traverseHandler = checkNotNullArgument( traverseHandler, "Impossible to traverse the Catalogue <%s> with a null handler" );
 
+                OpenSearchDescription description = getDescription();
 
+                for ( OpenSearchUrl url : description.getUrl() )
+                {
+                    if ( ATOM_XML.equals( url.getType() ) )
+                    {
+                        String urlTemplate = url.getTemplate();
+                        // TODO handle it
+                    }
+                }
             }
 
         };
