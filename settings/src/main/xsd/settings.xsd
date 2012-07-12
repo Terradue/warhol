@@ -28,8 +28,15 @@
 
   <!-- ===== Catalogues ===== -->
 
+  <xs:complexType name="Catalogues">
+    <xs:sequence>
+      <xs:element name="catalogue" type="Catalogue" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="Catalogue">
     <xs:sequence>
+      <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
       <xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" />
     </xs:sequence>
   </xs:complexType>
@@ -62,6 +69,7 @@
   <xs:complexType name="RemoteStorage">
     <xs:sequence>
       <xs:sequence>
+        <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
         <xs:element name="domain" minOccurs="1" maxOccurs="1" />
         <xs:element name="authentication" type="Authentication" minOccurs="0" maxOccurs="1" />
       </xs:sequence>
