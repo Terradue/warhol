@@ -37,6 +37,12 @@
     </dependency>
 
     <dependency>
+      <groupId>ca.juliusdavies</groupId>
+      <artifactId>not-yet-commons-ssl</artifactId>
+      <version>0.3.11</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.sonatype.spice</groupId>
       <artifactId>jersey-ahc-client</artifactId>
       <version>1.0.2</version>
