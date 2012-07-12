@@ -22,9 +22,6 @@ import static com.terradue.warhol.lang.Preconditions.checkNotNullArgument;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.w3._2005.atom.Feed;
-
-import com.sun.jersey.api.client.Client;
 import com.terradue.warhol.settings.Catalogue;
 import com.terradue.warhol.settings.Settings;
 import com.terradue.warhol.traverse.TraverseHandler;
@@ -32,18 +29,11 @@ import com.terradue.warhol.traverse.TraverseHandlerBuilder;
 
 public final class CatalogueSystem
 {
-    private static final String ATOM_XML = "application/atom+xml";
-
     private final Map<String, Catalogue> cataloguesIndex = new HashMap<String, Catalogue>();
 
-    private final Client restClient;
-
-    private final Settings settings;
-
-    public CatalogueSystem( Client restClient, Settings settings )
+    public CatalogueSystem( Settings settings )
     {
-        this.restClient = checkNotNullArgument( restClient, "Impossible to initialize a CatalogueSystem with a null REST client" );
-        this.settings = checkNotNullArgument( settings, "Impossible to initialize a CatalogueSystem from a null Settings reference" );
+        checkArgument( settings != null, "Impossible to initialize a CatalogueSystem from a null Settings reference" );
 
         for ( Catalogue catalogue : settings.getCatalogues().getCatalogue() )
         {
@@ -66,11 +56,6 @@ public final class CatalogueSystem
             }
 
         };
-    }
-
-    private Feed parse( String uri )
-    {
-        return restClient.resource( uri ).accept( ATOM_XML ).get( Feed.class );
     }
 
 }
