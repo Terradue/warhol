@@ -18,6 +18,42 @@
            targetNamespace="http://www.terradue.com/warhol/settings"
            xmlns="http://www.terradue.com/warhol/settings">
 
+  <!-- ===== Storages ===== -->
+
+  <xs:complexType name="Storages">
+    <xs:sequence>
+      <xs:sequence>
+        <xs:element name="local" type="LocalStorage" minOccurs="1" maxOccurs="1" />
+        <xs:element name="remote" type="RemoteStorage" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--
+   | Local Storage
+  -->
+  <xs:complexType name="LocalStorage">
+    <xs:sequence>
+      <xs:sequence>
+        <xs:element name="base-dir" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--
+   | Remote Storage
+  -->
+  <xs:complexType name="RemoteStorage">
+    <xs:sequence>
+      <xs:sequence>
+        <xs:element name="domain" minOccurs="1" maxOccurs="1" />
+        <xs:element name="authentication" type="Authentication" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ===== Authentication ===== -->
+
   <xs:complexType name="Authentication" />
 
   <!--
