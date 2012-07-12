@@ -23,6 +23,7 @@
   <xs:complexType name="Settings">
     <xs:sequence>
       <xs:element name="storages" type="Storages" minOccurs="0" maxOccurs="1" />
+      <xs:element name="catalogues" type="Catalogues" minOccurs="1" maxOccurs="1" />
     </xs:sequence>
   </xs:complexType>
 
