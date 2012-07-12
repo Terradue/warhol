@@ -47,6 +47,7 @@
   <modules>
     <module>feeds</module>
     <module>settings</module>
+    <module>core</module>
   </modules>
 
   <properties>
