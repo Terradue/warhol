@@ -48,7 +48,6 @@
     <module>feeds</module>
     <module>settings</module>
     <module>core</module>
-    <module>inject</module>
   </modules>
 
   <properties>
