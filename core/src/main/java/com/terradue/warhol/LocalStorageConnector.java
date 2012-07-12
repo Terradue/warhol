@@ -40,4 +40,18 @@ public final class LocalStorageConnector
                     baseDir );
     }
 
+    public File getSeriesDir( String series )
+    {
+        File seriesFile = new File( baseDir, series );
+
+        if ( !seriesFile.exists() )
+        {
+            checkState( seriesFile.mkdirs(),
+                        "Impossible to create %s directory on FileSystem, please verify you have enough rights",
+                        seriesFile );
+        }
+
+        return seriesFile;
+    }
+
 }
