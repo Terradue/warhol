@@ -46,7 +46,7 @@
   <xs:complexType name="Storages">
     <xs:sequence>
       <xs:element name="local" type="LocalStorage" minOccurs="1" maxOccurs="1" />
-      <xs:element name="remote" type="RemoteStorage" minOccurs="0" maxOccurs="1" />
+      <xs:element name="remote" type="RemoteStorage" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
 
