@@ -23,6 +23,6 @@ public interface CatalogueTraverseHandler
 
     void onSeries( Entry series );
 
-    void onProduct( Entry product );
+    void onDataSet( Entry product );
 
 }
