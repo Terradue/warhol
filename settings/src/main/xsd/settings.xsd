@@ -78,13 +78,18 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <xs:complexType name="UmSsoParameter">
+    <xs:attribute name="name" type="xs:string" />
+    <xs:attribute name="value" type="xs:string" />
+  </xs:complexType>
+
   <xs:complexType name="UmSsoAuthentication">
     <xs:complexContent>
       <xs:extension base="Authentication">
         <xs:sequence>
           <xs:element name="login-form" type="xs:anyURI" minOccurs="1" maxOccurs="1" />
           <xs:element name="method" type="HttpMethod" minOccurs="1" maxOccurs="1" />
-          <xs:element name="username" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="parameter" type="UmSsoParameter" minOccurs="0" maxOccurs="unbounded" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
