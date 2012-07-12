@@ -24,8 +24,8 @@ import java.util.Map;
 
 import com.terradue.warhol.settings.Catalogue;
 import com.terradue.warhol.settings.Settings;
-import com.terradue.warhol.traverse.TraverseHandler;
-import com.terradue.warhol.traverse.TraverseHandlerBuilder;
+import com.terradue.warhol.traverse.CatalogueTraverseHandler;
+import com.terradue.warhol.traverse.CatalogueTraverseHandlerBuilder;
 
 public final class CatalogueSystem
 {
@@ -41,16 +41,16 @@ public final class CatalogueSystem
         }
     }
 
-    public TraverseHandlerBuilder traverse( String catalogueId )
+    public CatalogueTraverseHandlerBuilder traverse( String catalogueId )
     {
         catalogueId = checkNotNullArgument( catalogueId, "Catalogue ID must be not null." );
         checkArgument( cataloguesIndex.containsKey( catalogueId ), "catalogue <%s> not present in the current system, only %s available",
                                                                    catalogueId, cataloguesIndex.keySet() );
-        return new TraverseHandlerBuilder()
+        return new CatalogueTraverseHandlerBuilder()
         {
 
             @Override
-            public void with( TraverseHandler traverseHandler )
+            public void with( CatalogueTraverseHandler traverseHandler )
             {
                 traverseHandler = checkNotNullArgument( traverseHandler, "Impossible to traverse the Catalogue <%s> with a null handler" );
             }

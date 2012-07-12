@@ -18,7 +18,7 @@ package com.terradue.warhol.traverse;
 
 import org.w3._2005.atom.Entry;
 
-public interface TraverseHandler
+public interface CatalogueTraverseHandler
 {
 
     void onSeries( Entry series );

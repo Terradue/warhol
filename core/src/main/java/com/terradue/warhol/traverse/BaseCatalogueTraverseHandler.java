@@ -16,9 +16,25 @@ package com.terradue.warhol.traverse;
  *    limitations under the License.
  */
 
-public interface TraverseHandlerBuilder
+import org.w3._2005.atom.Entry;
+
+/**
+ * Base {@link CatalogueTraverseHandler} implementation which methods do nothing.
+ */
+public abstract class BaseCatalogueTraverseHandler
+    implements CatalogueTraverseHandler
 {
 
-    void with( TraverseHandler traverseHandler );
+    @Override
+    public void onSeries( Entry series )
+    {
+        // do nothing
+    }
+
+    @Override
+    public void onProduct( Entry product )
+    {
+        // do nothing
+    }
 
 }
