@@ -16,13 +16,9 @@ package com.terradue.warhol.traverse;
  *    limitations under the License.
  */
 
-import java.io.File;
-
-public interface FileTraverseHandler
+public interface LocalStorageTraverseHandlerBuilder
 {
 
-    void onDirectory( final File directory );
-
-    void onFile( final File file );
+    void with( LocalStorageTraverseHandler handler );
 
 }

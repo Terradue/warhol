@@ -23,8 +23,8 @@ import static com.terradue.warhol.lang.Preconditions.checkState;
 import java.io.File;
 
 import com.terradue.warhol.settings.LocalStorage;
-import com.terradue.warhol.traverse.FileTraverseHandler;
-import com.terradue.warhol.traverse.FileTraverseHandlerBuilder;
+import com.terradue.warhol.traverse.LocalStorageTraverseHandler;
+import com.terradue.warhol.traverse.LocalStorageTraverseHandlerBuilder;
 
 public final class LocalStorageConnector
 {
@@ -58,23 +58,23 @@ public final class LocalStorageConnector
         return seriesFile;
     }
 
-    public FileTraverseHandlerBuilder traverse()
+    public LocalStorageTraverseHandlerBuilder traverse()
     {
         return traverse( baseDir );
     }
 
-    public FileTraverseHandlerBuilder traverse( String series )
+    public LocalStorageTraverseHandlerBuilder traverse( String series )
     {
         return traverse( getSeriesDir( series ) );
     }
 
-    private FileTraverseHandlerBuilder traverse( final File file )
+    private LocalStorageTraverseHandlerBuilder traverse( final File file )
     {
-        return new FileTraverseHandlerBuilder()
+        return new LocalStorageTraverseHandlerBuilder()
         {
 
             @Override
-            public void with( FileTraverseHandler handler )
+            public void with( LocalStorageTraverseHandler handler )
             {
                 checkArgument( handler != null, "Cannot traverse the LocalStorage with a null handler" );
 
