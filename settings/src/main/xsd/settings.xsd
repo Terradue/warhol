@@ -37,7 +37,7 @@
   <xs:complexType name="Catalogue">
     <xs:sequence>
       <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
-      <xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="description-url" type="xs:string" minOccurs="1" maxOccurs="1" />
     </xs:sequence>
   </xs:complexType>
 
