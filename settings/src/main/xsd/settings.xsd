@@ -39,7 +39,7 @@
     <xs:sequence>
       <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
       <xs:element name="description-url" type="xs:string" minOccurs="1" maxOccurs="1" />
-      <xs:element name="connection-timeout" type="xs:unsignedInt"" minOccurs="1" maxOccurs="1" />
+      <xs:element name="connection-timeout" type="xs:unsignedInt" minOccurs="1" maxOccurs="1" />
     </xs:sequence>
   </xs:complexType>
 
@@ -68,7 +68,7 @@
     <xs:sequence>
       <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
       <xs:element name="domain" minOccurs="1" maxOccurs="1" />
-      <xs:element name="connection-timeout" type="xs:unsignedInt"" minOccurs="1" maxOccurs="1" />
+      <xs:element name="connection-timeout" type="xs:unsignedInt" minOccurs="1" maxOccurs="1" />
       <xs:element name="authentication" type="Authentication" minOccurs="0" maxOccurs="1" />
     </xs:sequence>
   </xs:complexType>
