@@ -25,7 +25,7 @@ public final class CatalogueSystem
 
     private final Settings settings;
 
-    CatalogueSystem( Settings settings )
+    public CatalogueSystem( Settings settings )
     {
         this.settings = checkNotNullArgument( settings, "Impossible to initialize a CatalogueSystem froma  null Settings reference" );
     }
