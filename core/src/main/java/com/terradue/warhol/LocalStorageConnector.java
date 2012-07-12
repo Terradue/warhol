@@ -17,6 +17,7 @@ package com.terradue.warhol;
  */
 
 import static com.terradue.warhol.lang.Preconditions.checkArgument;
+import static com.terradue.warhol.lang.Preconditions.checkNotNullArgument;
 import static com.terradue.warhol.lang.Preconditions.checkState;
 
 import java.io.File;
@@ -42,6 +43,7 @@ public final class LocalStorageConnector
 
     public File getSeriesDir( String series )
     {
+        series = checkNotNullArgument( series, "Input Series identifier cannot be null" );
         File seriesFile = new File( baseDir, series );
 
         if ( !seriesFile.exists() )
