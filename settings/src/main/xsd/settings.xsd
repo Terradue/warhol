@@ -57,7 +57,7 @@
   -->
   <xs:complexType name="LocalStorage">
     <xs:sequence>
-      <xs:element name="base-dir" minOccurs="1" maxOccurs="1" />
+      <xs:element name="base-dir" type="xs:string" minOccurs="1" maxOccurs="1" />
     </xs:sequence>
   </xs:complexType>
 
