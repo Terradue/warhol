@@ -16,18 +16,49 @@ package com.terradue.warhol;
  *    limitations under the License.
  */
 
+import static com.terradue.warhol.lang.Preconditions.checkArgument;
 import static com.terradue.warhol.lang.Preconditions.checkNotNullArgument;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.terradue.warhol.settings.Catalogue;
 import com.terradue.warhol.settings.Settings;
+import com.terradue.warhol.traverse.TraverseHandler;
+import com.terradue.warhol.traverse.TraverseHandlerBuilder;
 
 public final class CatalogueSystem
 {
+
+    private final Map<String, Catalogue> cataloguesIndex = new HashMap<String, Catalogue>();
 
     private final Settings settings;
 
     public CatalogueSystem( Settings settings )
     {
         this.settings = checkNotNullArgument( settings, "Impossible to initialize a CatalogueSystem froma  null Settings reference" );
+
+        for ( Catalogue catalogue : settings.getCatalogues().getCatalogue() )
+        {
+            cataloguesIndex.put( catalogue.getId(), catalogue );
+        }
+    }
+
+    public TraverseHandlerBuilder traverse( String catalogueId )
+    {
+        catalogueId = checkNotNullArgument( catalogueId, "Catalogue ID must be not null." );
+        checkArgument( cataloguesIndex.containsKey( catalogueId ), "catalogue <%s> not present in the current system, only %s available",
+                                                                   catalogueId, cataloguesIndex.keySet() );
+        return new TraverseHandlerBuilder()
+        {
+
+            @Override
+            public void with( TraverseHandler traverseHandler )
+            {
+                traverseHandler = checkNotNullArgument( traverseHandler, "Impossible to traverse the Catalogue <%s> with a null handler" );
+            }
+
+        };
     }
 
 }
