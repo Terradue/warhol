@@ -18,6 +18,22 @@
            targetNamespace="http://www.terradue.com/warhol/settings"
            xmlns="http://www.terradue.com/warhol/settings">
 
+  <!-- ===== Main settings ===== -->
+
+  <xs:complexType name="Settings">
+    <xs:sequence>
+      <xs:element name="storages" type="Storages" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ===== Catalogues ===== -->
+
+  <xs:complexType name="Catalogue">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
   <!-- ===== Storages ===== -->
 
   <xs:complexType name="Storages">
