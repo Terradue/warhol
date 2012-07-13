@@ -62,17 +62,25 @@ public final class UrlTemplate
             appenders.add( new TextAppender( template.substring( prev ) ) );
         }
 
-        return new UrlTemplate( appenders, unmodifiableSet( variableNames ) );
+        return new UrlTemplate( template, appenders, unmodifiableSet( variableNames ) );
     }
+
+    private final String template;
 
     private final List<Appender> appenders;
 
     private final Set<String> variableNames;
 
-    UrlTemplate( List<Appender> appenders, Set<String> variableNames )
+    UrlTemplate( String template, List<Appender> appenders, Set<String> variableNames )
     {
+        this.template = template;
         this.appenders = appenders;
         this.variableNames = variableNames;
+    }
+
+    public String getTemplate()
+    {
+        return template;
     }
 
     public Set<String> getVariableNames()
