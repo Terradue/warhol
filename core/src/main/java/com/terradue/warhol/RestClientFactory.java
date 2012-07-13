@@ -18,13 +18,15 @@ package com.terradue.warhol;
 
 import static org.sonatype.spice.jersey.client.ahc.AhcHttpClient.create;
 
-import static com.terradue.warhol.settings.HttpAuthenticationScheme.*;
+import javax.net.ssl.KeyManager;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
 
 import org.sonatype.spice.jersey.client.ahc.config.DefaultAhcConfig;
 
-import com.ning.http.client.Realm.AuthScheme;
 import com.ning.http.client.AsyncHttpClientConfig.Builder;
 import com.ning.http.client.Realm;
+import com.ning.http.client.Realm.AuthScheme;
 import com.ning.http.client.resumable.ResumableIOExceptionFilter;
 import com.sun.jersey.api.client.Client;
 import com.terradue.warhol.settings.Authentication;
@@ -50,6 +52,28 @@ final class RestClientFactory
                .setMaximumConnectionsPerHost( settings.getHostMaximumConnection() )
                .setMaximumConnectionsTotal( settings.getTotalMaximumConnection() )
                .setFollowRedirects( settings.isFollowRedirects() );
+
+        // server certificates
+        TrustManager[] trustManagers;
+        if ( settings.isCheckCertificate() )
+        {
+            trustManagers = new TrustManager[] {};
+        }
+        else
+        {
+            trustManagers = new TrustManager[] { new RelaxedTrustManager() };
+        }
+        SSLContext context = null;
+        try
+        {
+            context = SSLContext.getInstance( "TLS" );
+            context.init( new KeyManager[] {}, trustManagers, null );
+            builder.setSSLContext( context );
+        }
+        catch ( Exception e )
+        {
+            throw new IllegalStateException( "Impossible to initialize SSL context", e );
+        }
 
         // authentication
         Authentication authentication = dataSource.getAuthentication();

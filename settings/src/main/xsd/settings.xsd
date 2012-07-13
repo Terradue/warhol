@@ -44,6 +44,7 @@
       <xs:element name="follow-redirects" type="xs:boolean" minOccurs="0" maxOccurs="1" default="true" />
       <xs:element name="host-maximum-connection" type="xs:unsignedShort" minOccurs="0" maxOccurs="1" default="5" />
       <xs:element name="total-maximum-connection" type="xs:unsignedShort" minOccurs="0" maxOccurs="1" default="5" />
+      <xs:element name="check-certificate" type="xs:boolean" minOccurs="0" maxOccurs="1" default="false" />
     </xs:sequence>
   </xs:complexType>
 
