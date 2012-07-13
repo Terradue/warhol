@@ -1,8 +1,5 @@
 package com.terradue.warhol.urltemplate;
 
-import java.util.LinkedList;
-import java.util.List;
-
 /*
  *    Copyright 2011-2012 Terradue srl
  *
@@ -19,6 +16,13 @@ import java.util.List;
  *    limitations under the License.
  */
 
+import static java.util.Collections.unmodifiableSet;
+
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
 public final class UrlTemplate
 {
 
@@ -30,17 +34,50 @@ public final class UrlTemplate
         }
 
         final List<Appender> appenders = new LinkedList<Appender>();
+        final Set<String> variableNames = new HashSet<String>();
 
+        int prev = 0;
+        int pos;
+        while ( ( pos = template.indexOf( '{', prev ) ) >= 0 )
+        {
+            if ( pos > 0 )
+            {
+                appenders.add( new TextAppender( template.substring( prev, pos ) ) );
 
+                int endName = template.indexOf( '}', pos );
 
-        return new UrlTemplate( appenders );
+                if ( endName < 0 )
+                {
+                    throw new IllegalArgumentException( "Syntax error in property: " + template );
+                }
+
+                final String variableName = template.substring( pos + 1, endName );
+                appenders.add( new VariableAppender( variableName ) );
+                variableNames.add( variableName );
+                prev = endName + 1;
+            }
+        }
+        if ( prev < template.length() )
+        {
+            appenders.add( new TextAppender( template.substring( prev ) ) );
+        }
+
+        return new UrlTemplate( appenders, unmodifiableSet( variableNames ) );
     }
 
     private final List<Appender> appenders;
 
-    UrlTemplate( List<Appender> appenders )
+    private final Set<String> variableNames;
+
+    UrlTemplate( List<Appender> appenders, Set<String> variableNames )
     {
         this.appenders = appenders;
+        this.variableNames = variableNames;
+    }
+
+    public Set<String> getVariableNames()
+    {
+        return variableNames;
     }
 
 }
