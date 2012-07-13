@@ -18,9 +18,13 @@ package com.terradue.warhol;
 
 import static org.sonatype.spice.jersey.client.ahc.AhcHttpClient.create;
 
+import static com.terradue.warhol.settings.HttpAuthenticationScheme.*;
+
 import org.sonatype.spice.jersey.client.ahc.config.DefaultAhcConfig;
 
+import com.ning.http.client.Realm.AuthScheme;
 import com.ning.http.client.AsyncHttpClientConfig.Builder;
+import com.ning.http.client.Realm;
 import com.ning.http.client.resumable.ResumableIOExceptionFilter;
 import com.sun.jersey.api.client.Client;
 import com.terradue.warhol.settings.Authentication;
@@ -68,7 +72,43 @@ final class RestClientFactory
 
     private static void configure( Builder builder, HttpAuthentication authentication )
     {
+        Realm.RealmBuilder realmBuilder = new Realm.RealmBuilder();
 
+        switch ( authentication.getScheme() )
+        {
+            case BASIC:
+                realmBuilder.setScheme( AuthScheme.BASIC );
+                break;
+
+            case DIGEST:
+                realmBuilder.setScheme( AuthScheme.DIGEST );
+                break;
+
+            case KERBEROS:
+                realmBuilder.setScheme( AuthScheme.KERBEROS );
+                break;
+
+            case NONE:
+                realmBuilder.setScheme( AuthScheme.NONE );
+                break;
+
+            case NTLM:
+                realmBuilder.setScheme( AuthScheme.NTLM );
+                break;
+
+            case SPNEGO:
+                realmBuilder.setScheme( AuthScheme.SPNEGO );
+                break;
+
+            default:
+                // do nothing
+                break;
+        }
+
+        builder.setRealm( realmBuilder.setPrincipal( authentication.getUsername() )
+                                      .setPassword( authentication.getPassword() )
+                                      .setUsePreemptiveAuth( authentication.isPreemptive() )
+                                      .build() );
     }
 
     private RestClientFactory()
