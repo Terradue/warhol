@@ -88,6 +88,11 @@ public final class UrlTemplate
         return variableNames;
     }
 
+    public UrlBuilder createNewUrl()
+    {
+        return new DefaultUrlBuilder( appenders );
+    }
+
     @Override
     public String toString()
     {
