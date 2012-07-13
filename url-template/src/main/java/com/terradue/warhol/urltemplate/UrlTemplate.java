@@ -45,11 +45,19 @@ public final class UrlTemplate
                 appenders.add( new TextAppender( template.substring( prev, pos ) ) );
 
                 int endName = template.indexOf( '}', pos );
-
                 checkArgument( endName >= 0, "Syntax error in property: %s", template );
 
-                final String variableName = template.substring( pos + 1, endName );
-                appenders.add( new VariableAppender( variableName ) );
+                boolean optional = false;
+
+                String variableName = template.substring( pos + 1, endName );
+
+                if ( '?' == variableName.charAt( variableName.length() - 1 ) )
+                {
+                    variableName = variableName.substring( 0, variableName.length() - 1 );
+                    optional = true;
+                }
+
+                appenders.add( new VariableAppender( variableName, optional ) );
                 variableNames.add( variableName );
                 prev = endName + 1;
             }

@@ -50,10 +50,16 @@ public final class UrlTemplateTestCase
         assertEquals( "http://example.com/people/simo-tripo/SSN", generatedUrl );
     }
 
+    @Test( expected = IllegalArgumentException.class )
+    public void requiredVariablesNotInterpolated()
+    {
+        parseTemplate( "http://example.com/people/{firstName}-{lastName}/SSN" ).createNewUrl().generate();
+    }
+
     @Test
     public void variablesNotInterpolated()
     {
-        UrlTemplate template = parseTemplate( "http://example.com/people/{firstName}-{lastName}/SSN" );
+        UrlTemplate template = parseTemplate( "http://example.com/people/{firstName?}-{lastName?}/SSN" );
 
         String generatedUrl = template.createNewUrl().generate();
 

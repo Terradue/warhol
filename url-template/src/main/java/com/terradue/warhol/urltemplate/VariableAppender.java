@@ -16,6 +16,8 @@ package com.terradue.warhol.urltemplate;
  *    limitations under the License.
  */
 
+import static com.terradue.warhol.lang.Preconditions.checkArgument;
+
 import static java.lang.String.format;
 
 import java.util.Map;
@@ -26,9 +28,12 @@ final class VariableAppender
 
     private final String variableName;
 
-    public VariableAppender( String variableName )
+    private final boolean optional;
+
+    public VariableAppender( String variableName, boolean optional )
     {
         this.variableName = variableName;
+        this.optional = optional;
     }
 
     @Override
@@ -38,6 +43,10 @@ final class VariableAppender
         if ( variableValue != null )
         {
             buffer.append( variableValue );
+        }
+        else
+        {
+            checkArgument( optional, "Variable <%s> is not optional, must be specified", variableName );
         }
     }
 
