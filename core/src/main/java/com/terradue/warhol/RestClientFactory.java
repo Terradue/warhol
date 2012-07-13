@@ -64,7 +64,7 @@ final class RestClientFactory
 
         // authentication
         Authentication authentication = dataSource.getAuthentication();
-        if ( authentication instanceof HttpAuthentication )
+        if ( authentication != null && authentication instanceof HttpAuthentication )
         {
             builder.setRealm( buildHttpAuthentication( (HttpAuthentication) authentication ) );
         }
@@ -74,7 +74,7 @@ final class RestClientFactory
         // private key
         KeyManager[] keyManagers;
 
-        if ( authentication instanceof SslAuthentication )
+        if ( authentication != null && authentication instanceof SslAuthentication )
         {
             keyManagers = initKeyManager( (SslAuthentication) authentication );
         }
