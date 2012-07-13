@@ -27,6 +27,26 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="DataSource">
+    <xs:sequence>
+      <xs:element name="http-settings" type="HttpSettings" minOccurs="1" maxOccurs="1" />
+      <xs:element name="authentication" type="Authentication" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ===== HTTP settings ===== -->
+
+  <xs:complexType name="HttpSettings">
+    <xs:sequence>
+      <xs:element name="catalogue" type="Catalogue" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element name="connection-timeout" type="xs:unsignedShort" minOccurs="0" maxOccurs="1" default="2" />
+      <xs:element name="allow-pooling-connection" type="xs:boolean" minOccurs="0" maxOccurs="1" default="true" />
+      <xs:element name="follow-redirects" type="xs:boolean" minOccurs="0" maxOccurs="1" default="true" />
+      <xs:element name="host-maximum-connection" type="xs:unsignedShort" minOccurs="0" maxOccurs="1" default="5" />
+      <xs:element name="total-maximum-connection" type="xs:unsignedShort" minOccurs="0" maxOccurs="1" default="5" />
+    </xs:sequence>
+  </xs:complexType>
+
   <!-- ===== Catalogues ===== -->
 
   <xs:complexType name="Catalogues">
@@ -36,11 +56,14 @@
   </xs:complexType>
 
   <xs:complexType name="Catalogue">
-    <xs:sequence>
-      <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
-      <xs:element name="description-url" type="xs:string" minOccurs="1" maxOccurs="1" />
-      <xs:element name="connection-timeout" type="xs:unsignedInt" minOccurs="1" maxOccurs="1" />
-    </xs:sequence>
+    <xs:complexContent>
+      <xs:extension base="DataSource">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="description-url" type="xs:string" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
 
   <!-- ===== Storages ===== -->
@@ -65,12 +88,14 @@
    | Remote Storage
   -->
   <xs:complexType name="RemoteStorage">
-    <xs:sequence>
-      <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
-      <xs:element name="domain" minOccurs="1" maxOccurs="1" />
-      <xs:element name="connection-timeout" type="xs:unsignedInt" minOccurs="1" maxOccurs="1" />
-      <xs:element name="authentication" type="Authentication" minOccurs="0" maxOccurs="1" />
-    </xs:sequence>
+    <xs:complexContent>
+      <xs:extension base="DataSource">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="domain" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
 
   <!-- ===== Authentication ===== -->
