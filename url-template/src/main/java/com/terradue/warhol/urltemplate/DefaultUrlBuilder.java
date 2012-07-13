@@ -42,7 +42,7 @@ final class DefaultUrlBuilder
             @Override
             public UrlBuilder to( String value )
             {
-                variables.put( variable, variable );
+                variables.put( variable, value );
 
                 return DefaultUrlBuilder.this;
             }

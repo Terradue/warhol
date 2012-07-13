@@ -20,6 +20,7 @@ import static com.terradue.warhol.urltemplate.UrlTemplate.parseTemplate;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -34,6 +35,19 @@ public final class UrlTemplateTestCase
         assertTrue( template.getVariableNames().contains( "firstName" ) );
         assertTrue( template.getVariableNames().contains( "lastName" ) );
         assertFalse( template.getVariableNames().contains( "doesNotExist" ) );
+    }
+
+    @Test
+    public void variablesInterpolation()
+    {
+        UrlTemplate template = parseTemplate( "http://example.com/people/{firstName}-{lastName}/SSN" );
+
+        String generatedUrl = template.createNewUrl()
+                                      .bind( "firstName" ).to( "simo" )
+                                      .bind( "lastName" ).to( "tripo" )
+                                      .generate();
+
+        assertEquals( "http://example.com/people/simo-tripo/SSN", generatedUrl );
     }
 
 }
