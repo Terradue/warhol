@@ -88,4 +88,10 @@ public final class UrlTemplate
         return variableNames;
     }
 
+    @Override
+    public String toString()
+    {
+        return template;
+    }
+
 }
