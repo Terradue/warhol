@@ -18,6 +18,8 @@ package com.terradue.warhol;
 
 import static com.terradue.warhol.urltemplate.UrlTemplate.parseTemplate;
 
+import java.util.Set;
+
 import static com.terradue.warhol.lang.Preconditions.checkNotNullArgument;
 import static com.terradue.warhol.lang.Preconditions.checkState;
 
@@ -66,6 +68,11 @@ public final class CatalogueConnector
     public OpenSearchDescription getDescription()
     {
         return openSearchDescription;
+    }
+
+    public Set<String> getSearchParametersName()
+    {
+        return catalogueSearchUrl.getVariableNames();
     }
 
     public CatalogueTraverseHandlerBuilder traverse()
