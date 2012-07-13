@@ -16,7 +16,10 @@ package com.terradue.warhol;
  *    limitations under the License.
  */
 
+import static com.terradue.warhol.urltemplate.UrlTemplate.parseTemplate;
+
 import static com.terradue.warhol.lang.Preconditions.checkNotNullArgument;
+import static com.terradue.warhol.lang.Preconditions.checkState;
 
 import org.w3._2005.atom.Feed;
 
@@ -26,6 +29,7 @@ import com.sun.jersey.api.client.Client;
 import com.terradue.warhol.settings.Catalogue;
 import com.terradue.warhol.traverse.CatalogueTraverseHandler;
 import com.terradue.warhol.traverse.CatalogueTraverseHandlerBuilder;
+import com.terradue.warhol.urltemplate.UrlTemplate;
 
 public final class CatalogueConnector
 {
@@ -36,15 +40,32 @@ public final class CatalogueConnector
 
     private final Client restClient;
 
+    private final OpenSearchDescription openSearchDescription;
+
+    private UrlTemplate catalogueSearchUrl;
+
     public CatalogueConnector( Catalogue catalogue )
     {
         this.catalogue = checkNotNullArgument( catalogue, "Impossible to initialize a CatalogueConnector froma  null Catalogue" );
         restClient = null;
+
+        openSearchDescription = restClient.resource( catalogue.getDescriptionUrl() ).get( OpenSearchDescription.class );
+
+        dance : for ( OpenSearchUrl url : openSearchDescription.getUrl() )
+        {
+            if ( ATOM_XML.equals( url.getType() ) )
+            {
+                catalogueSearchUrl = parseTemplate( url.getTemplate() );
+                break dance;
+            }
+        }
+
+        checkState( catalogueSearchUrl != null, "Catalogue description does not contain a valid %s search URL", ATOM_XML );
     }
 
     public OpenSearchDescription getDescription()
     {
-        return restClient.resource( catalogue.getDescriptionUrl() ).get( OpenSearchDescription.class );
+        return openSearchDescription;
     }
 
     public CatalogueTraverseHandlerBuilder traverse()
@@ -56,17 +77,6 @@ public final class CatalogueConnector
             public void with( CatalogueTraverseHandler traverseHandler )
             {
                 traverseHandler = checkNotNullArgument( traverseHandler, "Impossible to traverse the Catalogue <%s> with a null handler" );
-
-                OpenSearchDescription description = getDescription();
-
-                for ( OpenSearchUrl url : description.getUrl() )
-                {
-                    if ( ATOM_XML.equals( url.getType() ) )
-                    {
-                        String urlTemplate = url.getTemplate();
-                        // TODO handle it
-                    }
-                }
             }
 
         };
