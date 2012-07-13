@@ -16,16 +16,21 @@ package com.terradue.warhol;
  *    limitations under the License.
  */
 
+import static com.terradue.warhol.lang.Preconditions.checkArgument;
 import static org.sonatype.spice.jersey.client.ahc.AhcHttpClient.create;
 
+import java.io.File;
+import java.security.KeyStore;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
 import javax.net.ssl.KeyManager;
+import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import org.apache.commons.ssl.KeyMaterial;
 import org.sonatype.spice.jersey.client.ahc.config.DefaultAhcConfig;
 
 import com.ning.http.client.AsyncHttpClientConfig.Builder;
@@ -57,8 +62,30 @@ final class RestClientFactory
                .setMaximumConnectionsTotal( settings.getTotalMaximumConnection() )
                .setFollowRedirects( settings.isFollowRedirects() );
 
-        // server certificates
+        // authentication
+        Authentication authentication = dataSource.getAuthentication();
+        if ( authentication instanceof HttpAuthentication )
+        {
+            configure( builder, (HttpAuthentication) authentication );
+        }
+
+        // ==== SSL ====
+
+        // private key
+        KeyManager[] keyManagers;
+
+        if ( authentication instanceof SslAuthentication )
+        {
+            keyManagers = initKeyManager( (SslAuthentication) authentication );
+        }
+        else
+        {
+            keyManagers = new KeyManager[] {};
+        }
+
         TrustManager[] trustManagers;
+
+        // server certificates
         if ( settings.isCheckCertificate() )
         {
             trustManagers = new TrustManager[] {};
@@ -67,11 +94,13 @@ final class RestClientFactory
         {
             trustManagers = new TrustManager[] { new RelaxedTrustManager() };
         }
+
+        // SSL context
         SSLContext context = null;
         try
         {
             context = SSLContext.getInstance( "TLS" );
-            context.init( new KeyManager[] {}, trustManagers, null );
+            context.init( keyManagers, trustManagers, null );
             builder.setSSLContext( context );
         }
         catch ( Exception e )
@@ -79,23 +108,66 @@ final class RestClientFactory
             throw new IllegalStateException( "Impossible to initialize SSL context", e );
         }
 
-        // authentication
-        Authentication authentication = dataSource.getAuthentication();
-        if ( authentication instanceof SslAuthentication )
-        {
-            configure( config.getAsyncHttpClientConfigBuilder(), (SslAuthentication) authentication );
-        }
-        else if ( authentication instanceof HttpAuthentication )
-        {
-            configure( config.getAsyncHttpClientConfigBuilder(), (HttpAuthentication) authentication );
-        }
-
         return create( config );
     }
 
-    private static void configure( Builder builder, SslAuthentication authentication )
+    private static KeyManager[] initKeyManager( SslAuthentication sslAuthentication )
     {
+        if ( sslAuthentication.getProxyCertificate() != null )
+        {
+            return fromSslProxy( sslAuthentication.getProxyCertificate() );
+        }
 
+        return fromSslKeyAndCertificate( sslAuthentication.getPublicCertificate(),
+                                         sslAuthentication.getPrivateKey(),
+                                         sslAuthentication.getPassword() );
+    }
+
+    private static KeyManager[] fromSslProxy( String proxyCertificateLocation )
+    {
+        return fromSslKeyAndCertificate( proxyCertificateLocation, proxyCertificateLocation, null );
+    }
+
+    private static KeyManager[] fromSslKeyAndCertificate( String publicCertificateLocation, String provateKeyLocation, String sslPassword )
+    {
+        File publicCertificate = checkFile( publicCertificateLocation );
+        File privateKey = checkFile( provateKeyLocation );
+
+        char[] password;
+        if ( sslPassword != null )
+        {
+            password = sslPassword.toCharArray();
+        }
+        else
+        {
+            password = new char[] {};
+        }
+
+        try
+        {
+            final KeyStore store = new KeyMaterial( publicCertificate, privateKey, password ).getKeyStore();
+            store.load( null, password );
+
+            // initialize key and trust managers -> default behavior
+            final KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance( "SunX509" );
+            // password for key and store have to be the same IIRC
+            keyManagerFactory.init( store, password );
+            return keyManagerFactory.getKeyManagers();
+        }
+        catch ( Exception e )
+        {
+            throw new IllegalStateException( "Impossible to initialize SSL certificate/key", e );
+        }
+    }
+
+    private static File checkFile( String fileLocation )
+    {
+        checkArgument( fileLocation != null, "Impossible to read the certificate from a null location!" );
+
+        File file = new File( fileLocation );
+        checkArgument( file.exists(), "File %s not found, please verify it exists", file );
+        checkArgument( !file.isDirectory(), "File %s must be not a directory", file );
+        return file;
     }
 
     private static void configure( Builder builder, HttpAuthentication authentication )
