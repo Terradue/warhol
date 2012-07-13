@@ -18,6 +18,8 @@ package com.terradue.warhol;
 
 import static com.terradue.warhol.urltemplate.UrlTemplate.parseTemplate;
 
+import java.io.Closeable;
+import java.io.IOException;
 import java.util.Set;
 
 import static com.terradue.warhol.lang.Preconditions.checkNotNullArgument;
@@ -34,11 +36,10 @@ import com.terradue.warhol.traverse.CatalogueTraverseHandlerBuilder;
 import com.terradue.warhol.urltemplate.UrlTemplate;
 
 public final class CatalogueConnector
+    implements Closeable
 {
 
     private static final String ATOM_XML = "application/atom+xml";
-
-    private final Catalogue catalogue;
 
     private final Client restClient;
 
@@ -48,7 +49,8 @@ public final class CatalogueConnector
 
     public CatalogueConnector( Catalogue catalogue )
     {
-        this.catalogue = checkNotNullArgument( catalogue, "Impossible to initialize a CatalogueConnector froma  null Catalogue" );
+        checkNotNullArgument( catalogue, "Impossible to initialize a CatalogueConnector froma  null Catalogue" );
+
         restClient = null;
 
         openSearchDescription = restClient.resource( catalogue.getDescriptionUrl() ).get( OpenSearchDescription.class );
@@ -92,6 +94,13 @@ public final class CatalogueConnector
     Feed parse( String uri )
     {
         return restClient.resource( uri ).accept( ATOM_XML ).get( Feed.class );
+    }
+
+    @Override
+    public void close()
+        throws IOException
+    {
+        restClient.destroy();
     }
 
 }
