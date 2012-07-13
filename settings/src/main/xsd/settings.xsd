@@ -113,7 +113,7 @@
           <xs:element name="proxy-certificate" type="xs:string" minOccurs="0" maxOccurs="1" />
           <xs:element name="private-key" type="xs:string" minOccurs="0" maxOccurs="1" />
           <xs:element name="public-certificate" type="xs:string" minOccurs="0" maxOccurs="1" />
-          <xs:element name="password" type="xs:string" minOccurs="0" maxOccurs="0" />
+          <xs:element name="password" type="xs:string" minOccurs="0" maxOccurs="1" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
