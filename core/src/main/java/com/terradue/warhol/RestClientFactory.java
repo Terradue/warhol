@@ -66,7 +66,7 @@ final class RestClientFactory
         Authentication authentication = dataSource.getAuthentication();
         if ( authentication instanceof HttpAuthentication )
         {
-            configure( builder, (HttpAuthentication) authentication );
+            builder.setRealm( buildHttpAuthentication( (HttpAuthentication) authentication ) );
         }
 
         // ==== SSL ====
@@ -109,6 +109,47 @@ final class RestClientFactory
         }
 
         return create( config );
+    }
+
+    private static Realm buildHttpAuthentication( HttpAuthentication authentication )
+    {
+        final Realm.RealmBuilder realmBuilder = new Realm.RealmBuilder();
+
+        switch ( authentication.getScheme() )
+        {
+            case BASIC:
+                realmBuilder.setScheme( AuthScheme.BASIC );
+                break;
+
+            case DIGEST:
+                realmBuilder.setScheme( AuthScheme.DIGEST );
+                break;
+
+            case KERBEROS:
+                realmBuilder.setScheme( AuthScheme.KERBEROS );
+                break;
+
+            case NONE:
+                realmBuilder.setScheme( AuthScheme.NONE );
+                break;
+
+            case NTLM:
+                realmBuilder.setScheme( AuthScheme.NTLM );
+                break;
+
+            case SPNEGO:
+                realmBuilder.setScheme( AuthScheme.SPNEGO );
+                break;
+
+            default:
+                // do nothing
+                break;
+        }
+
+        return realmBuilder.setPrincipal( authentication.getUsername() )
+                            .setPassword( authentication.getPassword() )
+                            .setUsePreemptiveAuth( authentication.isPreemptive() )
+                            .build();
     }
 
     private static KeyManager[] initKeyManager( SslAuthentication sslAuthentication )
@@ -168,47 +209,6 @@ final class RestClientFactory
         checkArgument( file.exists(), "File %s not found, please verify it exists", file );
         checkArgument( !file.isDirectory(), "File %s must be not a directory", file );
         return file;
-    }
-
-    private static void configure( Builder builder, HttpAuthentication authentication )
-    {
-        Realm.RealmBuilder realmBuilder = new Realm.RealmBuilder();
-
-        switch ( authentication.getScheme() )
-        {
-            case BASIC:
-                realmBuilder.setScheme( AuthScheme.BASIC );
-                break;
-
-            case DIGEST:
-                realmBuilder.setScheme( AuthScheme.DIGEST );
-                break;
-
-            case KERBEROS:
-                realmBuilder.setScheme( AuthScheme.KERBEROS );
-                break;
-
-            case NONE:
-                realmBuilder.setScheme( AuthScheme.NONE );
-                break;
-
-            case NTLM:
-                realmBuilder.setScheme( AuthScheme.NTLM );
-                break;
-
-            case SPNEGO:
-                realmBuilder.setScheme( AuthScheme.SPNEGO );
-                break;
-
-            default:
-                // do nothing
-                break;
-        }
-
-        builder.setRealm( realmBuilder.setPrincipal( authentication.getUsername() )
-                                      .setPassword( authentication.getPassword() )
-                                      .setUsePreemptiveAuth( authentication.isPreemptive() )
-                                      .build() );
     }
 
     private RestClientFactory()
