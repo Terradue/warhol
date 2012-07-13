@@ -16,30 +16,21 @@ package com.terradue.warhol;
  *    limitations under the License.
  */
 
-import static java.lang.Runtime.getRuntime;
 import static org.sonatype.spice.jersey.client.ahc.AhcHttpClient.create;
 
+import org.sonatype.spice.jersey.client.ahc.config.DefaultAhcConfig;
+
 import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.config.ClientConfig;
+import com.terradue.warhol.settings.Authentication;
 
 final class RestClientFactory
 {
 
-    public static Client newRestClient( ClientConfig config )
+    public static Client newRestClient( Authentication authentication )
     {
-        final Client client = create( config );
+        DefaultAhcConfig config = new DefaultAhcConfig();
 
-        getRuntime().addShutdownHook( new Thread()
-        {
-
-            public void run()
-            {
-                client.destroy();
-            }
-
-        } );
-
-        return client;
+        return create( config );
     }
 
     private RestClientFactory()
