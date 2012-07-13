@@ -137,7 +137,7 @@
       <xs:extension base="Authentication">
         <xs:sequence>
           <xs:element name="username" type="xs:string" minOccurs="1" maxOccurs="1" />
-          <xs:element name="password" type="xs:string" minOccurs="0" maxOccurs="0" />
+          <xs:element name="password" type="xs:string" minOccurs="1" maxOccurs="1" />
           <xs:element name="scheme" type="HttpAuthenticationScheme" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
       </xs:extension>
