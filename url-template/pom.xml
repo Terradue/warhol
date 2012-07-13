@@ -29,6 +29,13 @@
 
   <name>T2 Warhol :: URL Template</name>
 
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+  </dependencies>
+
   <build>
     <resources>
       <resource>
