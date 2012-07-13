@@ -138,6 +138,7 @@
         <xs:sequence>
           <xs:element name="username" type="xs:string" minOccurs="1" maxOccurs="1" />
           <xs:element name="password" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="preemptive" type="xs:boolean" minOccurs="0" maxOccurs="1" default="true" />
           <xs:element name="scheme" type="HttpAuthenticationScheme" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
       </xs:extension>
