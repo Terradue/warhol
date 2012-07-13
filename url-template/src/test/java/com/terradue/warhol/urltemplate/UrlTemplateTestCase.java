@@ -50,4 +50,14 @@ public final class UrlTemplateTestCase
         assertEquals( "http://example.com/people/simo-tripo/SSN", generatedUrl );
     }
 
+    @Test
+    public void variablesNotInterpolated()
+    {
+        UrlTemplate template = parseTemplate( "http://example.com/people/{firstName}-{lastName}/SSN" );
+
+        String generatedUrl = template.createNewUrl().generate();
+
+        assertEquals( "http://example.com/people/-/SSN", generatedUrl );
+    }
+
 }
