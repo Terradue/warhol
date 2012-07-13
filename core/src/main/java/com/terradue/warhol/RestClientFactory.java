@@ -18,9 +18,13 @@ package com.terradue.warhol;
 
 import static org.sonatype.spice.jersey.client.ahc.AhcHttpClient.create;
 
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import org.sonatype.spice.jersey.client.ahc.config.DefaultAhcConfig;
 
@@ -138,6 +142,32 @@ final class RestClientFactory
     private RestClientFactory()
     {
         // do nothing
+    }
+
+    private static final class RelaxedTrustManager
+        implements X509TrustManager
+    {
+
+        @Override
+        public void checkClientTrusted( X509Certificate[] chain, String authType )
+            throws CertificateException
+        {
+            // do nothing
+        }
+
+        @Override
+        public void checkServerTrusted( X509Certificate[] chain, String authType )
+            throws CertificateException
+        {
+            // do nothing
+        }
+
+        @Override
+        public X509Certificate[] getAcceptedIssuers()
+        {
+            return new X509Certificate[0];
+        }
+
     }
 
 }
