@@ -77,6 +77,12 @@
       <artifactId>async-http-client</artifactId>
       <version>1.7.5</version>
     </dependency>
+
+    <dependency>
+      <groupId>ca.juliusdavies</groupId>
+      <artifactId>not-yet-commons-ssl</artifactId>
+      <version>0.3.11</version>
+    </dependency>
   </dependencies>
 
   <build>
