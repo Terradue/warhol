@@ -16,6 +16,9 @@ package com.terradue.warhol.urltemplate;
  *    limitations under the License.
  */
 
+import static com.terradue.warhol.lang.Preconditions.checkArgument;
+import static com.terradue.warhol.lang.Preconditions.checkNotNullArgument;
+
 import static java.util.Collections.unmodifiableSet;
 
 import java.util.HashSet;
@@ -28,10 +31,7 @@ public final class UrlTemplate
 
     public static UrlTemplate parseTemplate( String template )
     {
-        if ( template == null )
-        {
-            throw new IllegalArgumentException( "Template cannot be " );
-        }
+        template = checkNotNullArgument( template, "Impossible to parse a null template" );
 
         final List<Appender> appenders = new LinkedList<Appender>();
         final Set<String> variableNames = new HashSet<String>();
@@ -46,10 +46,7 @@ public final class UrlTemplate
 
                 int endName = template.indexOf( '}', pos );
 
-                if ( endName < 0 )
-                {
-                    throw new IllegalArgumentException( "Syntax error in property: " + template );
-                }
+                checkArgument( endName >= 0, "Syntax error in property: %s", template );
 
                 final String variableName = template.substring( pos + 1, endName );
                 appenders.add( new VariableAppender( variableName ) );

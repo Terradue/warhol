@@ -16,6 +16,8 @@ package com.terradue.warhol.urltemplate;
  *    limitations under the License.
  */
 
+import static com.terradue.warhol.lang.Preconditions.checkNotNullArgument;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,15 +36,17 @@ final class DefaultUrlBuilder
     }
 
     @Override
-    public VariableValueBinder bind( final String variable )
+    public VariableValueBinder bind( String variable )
     {
+        final String checkedVariable = checkNotNullArgument( variable, "Null variable name cannot be bound" );
+
         return new VariableValueBinder()
         {
 
             @Override
             public UrlBuilder to( String value )
             {
-                variables.put( variable, value );
+                variables.put( checkedVariable, checkNotNullArgument( value, "Null variable for <%s> not allowed", checkedVariable ) );
 
                 return DefaultUrlBuilder.this;
             }
