@@ -20,17 +20,55 @@ import static org.sonatype.spice.jersey.client.ahc.AhcHttpClient.create;
 
 import org.sonatype.spice.jersey.client.ahc.config.DefaultAhcConfig;
 
+import com.ning.http.client.AsyncHttpClientConfig.Builder;
+import com.ning.http.client.resumable.ResumableIOExceptionFilter;
 import com.sun.jersey.api.client.Client;
 import com.terradue.warhol.settings.Authentication;
+import com.terradue.warhol.settings.DataSource;
+import com.terradue.warhol.settings.HttpAuthentication;
+import com.terradue.warhol.settings.HttpSettings;
+import com.terradue.warhol.settings.SslAuthentication;
 
 final class RestClientFactory
 {
 
-    public static Client newRestClient( Authentication authentication )
+    public static Client newRestClient( DataSource dataSource )
     {
         DefaultAhcConfig config = new DefaultAhcConfig();
 
+        Builder builder = config.getAsyncHttpClientConfigBuilder();
+
+        // basic http settings
+        HttpSettings settings = dataSource.getHttpSettings();
+        builder.setRequestTimeoutInMs( settings.getConnectionTimeout() * 60 * 60 * 1000 ) // 45 minutes
+               .setAllowPoolingConnection( settings.isAllowPoolingConnection() )
+               .addIOExceptionFilter( new ResumableIOExceptionFilter() )
+               .setMaximumConnectionsPerHost( settings.getHostMaximumConnection() )
+               .setMaximumConnectionsTotal( settings.getTotalMaximumConnection() )
+               .setFollowRedirects( settings.isFollowRedirects() );
+
+        // authentication
+        Authentication authentication = dataSource.getAuthentication();
+        if ( authentication instanceof SslAuthentication )
+        {
+            configure( config.getAsyncHttpClientConfigBuilder(), (SslAuthentication) authentication );
+        }
+        else if ( authentication instanceof HttpAuthentication )
+        {
+            configure( config.getAsyncHttpClientConfigBuilder(), (HttpAuthentication) authentication );
+        }
+
         return create( config );
+    }
+
+    private static void configure( Builder builder, SslAuthentication authentication )
+    {
+
+    }
+
+    private static void configure( Builder builder, HttpAuthentication authentication )
+    {
+
     }
 
     private RestClientFactory()
