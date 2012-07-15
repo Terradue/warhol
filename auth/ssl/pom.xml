@@ -33,6 +33,13 @@
   <dependencies>
     <dependency>
       <groupId>${project.parent.groupId}</groupId>
+      <artifactId>warhol-lang</artifactId>
+      <version>${project.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>${project.parent.groupId}</groupId>
       <artifactId>warhol-core</artifactId>
       <version>${project.version}</version>
       <scope>provided</scope>
