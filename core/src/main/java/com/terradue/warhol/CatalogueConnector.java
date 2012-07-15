@@ -16,7 +16,7 @@ package com.terradue.warhol;
  *    limitations under the License.
  */
 
-import static com.terradue.warhol.RestClientFactory.newRestClient;
+import static com.terradue.warhol.RestClientFactory.getRestClientFactoryInstance;
 import static com.terradue.warhol.urltemplate.UrlTemplate.parseTemplate;
 
 import java.io.Closeable;
@@ -52,7 +52,7 @@ public final class CatalogueConnector
     {
         checkNotNullArgument( catalogue, "Impossible to initialize a CatalogueConnector froma  null Catalogue" );
 
-        restClient = newRestClient( catalogue );
+        restClient = getRestClientFactoryInstance().newRestClient( catalogue );
 
         openSearchDescription = restClient.resource( catalogue.getDescriptionUrl() ).get( OpenSearchDescription.class );
 

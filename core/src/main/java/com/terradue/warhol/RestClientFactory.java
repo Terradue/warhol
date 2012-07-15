@@ -31,7 +31,19 @@ import com.terradue.warhol.settings.HttpSettings;
 final class RestClientFactory
 {
 
-    public static Client newRestClient( DataSource dataSource )
+    private static final RestClientFactory INSTANCE = new RestClientFactory();
+
+    public static RestClientFactory getRestClientFactoryInstance()
+    {
+        return INSTANCE;
+    }
+
+    private RestClientFactory()
+    {
+        // do nothing
+    }
+
+    public Client newRestClient( DataSource dataSource )
     {
         DefaultAhcConfig config = new DefaultAhcConfig();
 
@@ -47,11 +59,6 @@ final class RestClientFactory
                .setFollowRedirects( httpSettings.isFollowRedirects() );
 
         return create( config );
-    }
-
-    private RestClientFactory()
-    {
-        // do nothing
     }
 
 }
