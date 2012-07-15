@@ -76,12 +76,6 @@
       <groupId>com.ning</groupId>
       <artifactId>async-http-client</artifactId>
     </dependency>
-
-    <dependency>
-      <groupId>ca.juliusdavies</groupId>
-      <artifactId>not-yet-commons-ssl</artifactId>
-      <version>0.3.11</version>
-    </dependency>
   </dependencies>
 
   <build>
