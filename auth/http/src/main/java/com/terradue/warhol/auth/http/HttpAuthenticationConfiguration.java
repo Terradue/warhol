@@ -71,10 +71,10 @@ public final class HttpAuthenticationConfiguration
                 break;
         }
 
-        httpClientConfig.setRealm(  realmBuilder.setPrincipal( authentication.getUsername() )
-                                                .setPassword( authentication.getPassword() )
-                                                .setUsePreemptiveAuth( authentication.isPreemptive() )
-                                                .build() );
+        httpClientConfig.setRealm( realmBuilder.setPrincipal( authentication.getUsername() )
+                                               .setPassword( authentication.getPassword() )
+                                               .setUsePreemptiveAuth( authentication.isPreemptive() )
+                                               .build() );
     }
 
 }
