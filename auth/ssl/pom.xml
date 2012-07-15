@@ -39,6 +39,12 @@
     </dependency>
 
     <dependency>
+      <groupId>${project.parent.groupId}</groupId>
+      <artifactId>warhol-settings</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
       <groupId>com.ning</groupId>
       <artifactId>async-http-client</artifactId>
       <scope>provided</scope>
