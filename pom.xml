@@ -50,6 +50,10 @@
     <module>settings</module>
     <module>url-template</module>
     <module>core</module>
+    <!-- authenticators -->
+    <module>auth/http</module>
+    <module>auth/ssl</module>
+    <module>auth/um-sso</module>
   </modules>
 
   <properties>
