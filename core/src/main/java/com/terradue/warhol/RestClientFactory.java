@@ -16,6 +16,8 @@ package com.terradue.warhol;
  *    limitations under the License.
  */
 
+import static com.terradue.warhol.lang.Preconditions.checkNotNull;
+
 import static org.sonatype.spice.jersey.client.ahc.AhcHttpClient.create;
 
 import org.sonatype.spice.jersey.client.ahc.config.DefaultAhcConfig;
@@ -36,13 +38,13 @@ final class RestClientFactory
         Builder builder = config.getAsyncHttpClientConfigBuilder();
 
         // basic http settings
-        HttpSettings settings = dataSource.getHttpSettings();
-        builder.setRequestTimeoutInMs( settings.getConnectionTimeout() * 60 * 60 * 1000 ) // 45 minutes
-               .setAllowPoolingConnection( settings.isAllowPoolingConnection() )
+        HttpSettings httpSettings = checkNotNull( dataSource.getHttpSettings(), "HTTP settings cannot be null in DataSource" );
+        builder.setRequestTimeoutInMs( httpSettings.getConnectionTimeout() * 60 * 60 * 1000 ) // 45 minutes
+               .setAllowPoolingConnection( httpSettings.isAllowPoolingConnection() )
                .addIOExceptionFilter( new ResumableIOExceptionFilter() )
-               .setMaximumConnectionsPerHost( settings.getHostMaximumConnection() )
-               .setMaximumConnectionsTotal( settings.getTotalMaximumConnection() )
-               .setFollowRedirects( settings.isFollowRedirects() );
+               .setMaximumConnectionsPerHost( httpSettings.getHostMaximumConnection() )
+               .setMaximumConnectionsTotal( httpSettings.getTotalMaximumConnection() )
+               .setFollowRedirects( httpSettings.isFollowRedirects() );
 
         return create( config );
     }
