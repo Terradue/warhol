@@ -28,7 +28,7 @@
   <artifactId>warhol-client-core</artifactId>
   <packaging>jar</packaging>
 
-  <name>T2 Warhol :: Core engine</name>
+  <name>T2 Warhol :: Client :: Core engine</name>
 
   <dependencies>
     <dependency>

@@ -28,7 +28,7 @@
   <artifactId>warhol-http-auth</artifactId>
   <packaging>jar</packaging>
 
-  <name>T2 Warhol :: Authentication :: HTTP</name>
+  <name>T2 Warhol :: Client :: Authentication :: HTTP</name>
 
   <dependencies>
     <dependency>

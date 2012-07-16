@@ -28,7 +28,7 @@
   <artifactId>warhol-ssl-auth</artifactId>
   <packaging>jar</packaging>
 
-  <name>T2 Warhol :: Authentication :: SSL</name>
+  <name>T2 Warhol :: Client :: Authentication :: SSL</name>
 
   <dependencies>
     <dependency>

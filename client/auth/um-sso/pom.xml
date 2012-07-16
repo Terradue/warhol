@@ -28,7 +28,7 @@
   <artifactId>warhol-umsso-auth</artifactId>
   <packaging>jar</packaging>
 
-  <name>T2 Warhol :: Authentication :: UM-SSO</name>
+  <name>T2 Warhol :: Client :: Authentication :: UM-SSO</name>
 
   <dependencies>
     <dependency>

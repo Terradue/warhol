@@ -28,7 +28,7 @@
   <artifactId>warhol-settings</artifactId>
   <packaging>jar</packaging>
 
-  <name>T2 Warhol :: Settings APIs</name>
+  <name>T2 Warhol :: Client :: Settings APIs</name>
 
   <build>
     <resources>
