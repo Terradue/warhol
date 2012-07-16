@@ -2,6 +2,8 @@ package com.terradue.warhol.transfer;
 
 import java.io.File;
 
+import com.terradue.warhol.settings.RemoteStorage;
+
 /*
  *    Copyright 2011-2012 Terradue srl
  *
@@ -20,6 +22,8 @@ import java.io.File;
 
 public interface Transferrer
 {
+
+    void init( RemoteStorage remoteStorage );
 
     String[] supportedProtocols();
 
