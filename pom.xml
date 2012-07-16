@@ -74,6 +74,7 @@
     <!--
      | file transfer
     -->
+    <module>client/transfer/apis</module>
     <module>client/transfer/http</module>
     <!--
      | core module
