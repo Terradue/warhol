@@ -68,6 +68,10 @@
     <module>client/auth/ssl</module>
     <module>client/auth/um-sso</module>
     <!--
+     | AHC stuff
+    -->
+    <module>client/ahc-configurator</module>
+    <!--
      | file transfer
     -->
     <module>client/transfer/http</module>
