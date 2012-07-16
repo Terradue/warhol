@@ -97,11 +97,6 @@ final class UmSsoStatusResponseFilter
             }
         }
 
-        if ( logger.isDebugEnabled() )
-        {
-            logger.debug( "Checking server status code reply: {}", responseStatus.getStatusCode() );
-        }
-
         // check UM-SSO conditions - this is hack-ish but didn't find a better solution ATM
         if ( HTTP_OK == responseStatus.getStatusCode()
              && ( contained( authentication.getLoginForm(), ctx.getRequest().getUrl() )
@@ -109,7 +104,7 @@ final class UmSsoStatusResponseFilter
         {
             if ( logger.isDebugEnabled() )
             {
-                logger.debug( "Redirecting request to {} {}", authentication.getMethod(), authentication.getLoginForm() );
+                logger.debug( "Logging in on {} {}", authentication.getMethod(), authentication.getLoginForm() );
             }
 
             RequestBuilder authRequestBuilder = new RequestBuilder( authentication.getMethod().toString() )
