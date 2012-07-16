@@ -32,8 +32,8 @@
 
   <dependencies>
     <dependency>
-      <groupId>${project.parent.groupId}.client</groupId>
-      <artifactId>warhol-client-core</artifactId>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>warhol-auth-apis</artifactId>
       <version>${project.version}</version>
       <scope>provided</scope>
     </dependency>

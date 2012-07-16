@@ -25,42 +25,17 @@
   </parent>
 
   <groupId>${project.parent.groupId}.client.auth</groupId>
-  <artifactId>warhol-ssl-auth</artifactId>
+  <artifactId>warhol-auth-apis</artifactId>
   <packaging>jar</packaging>
 
-  <name>T2 Warhol :: Client :: Authentication :: SSL</name>
+  <name>T2 Warhol :: Client :: Authentication :: APIs</name>
 
   <dependencies>
-    <dependency>
-      <groupId>${project.parent.groupId}.commons</groupId>
-      <artifactId>warhol-lang</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>${project.parent.groupId}.client.auth</groupId>
-      <artifactId>warhol-auth-apis</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
     <dependency>
       <groupId>${project.parent.groupId}.client</groupId>
       <artifactId>warhol-settings</artifactId>
       <version>${project.version}</version>
       <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.kohsuke.metainf-services</groupId>
-      <artifactId>metainf-services</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>ca.juliusdavies</groupId>
-      <artifactId>not-yet-commons-ssl</artifactId>
-      <version>0.3.11</version>
     </dependency>
 
     <dependency>
