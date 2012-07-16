@@ -16,10 +16,13 @@ package com.terradue.warhol.auth.umsso;
  *    limitations under the License.
  */
 
+import org.kohsuke.MetaInfServices;
+
 import com.ning.http.client.AsyncHttpClientConfig.Builder;
 import com.terradue.warhol.auth.AuthenticationConfiguration;
 import com.terradue.warhol.settings.UmSsoAuthentication;
 
+@MetaInfServices
 public final class UmSsoAuthenticationConfiguration
     implements AuthenticationConfiguration<UmSsoAuthentication>
 {
