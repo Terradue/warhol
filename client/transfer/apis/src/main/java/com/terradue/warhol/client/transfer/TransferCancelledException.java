@@ -16,7 +16,7 @@ package com.terradue.warhol.client.transfer;
  *    limitations under the License.
  */
 
-public class TransferCancelledException
+public final class TransferCancelledException
     extends TransferException
 {
 
