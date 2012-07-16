@@ -16,7 +16,7 @@ package com.terradue.warhol.client.transfer;
  *    limitations under the License.
  */
 
-final class ProductNotFoundException
+public final class ProductNotFoundException
     extends TransferException
 {
 
