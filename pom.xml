@@ -57,14 +57,24 @@
     <module>url-template</module>
 
     <!--
-     | client
+     | client settings APIs
     -->
     <module>client/settings</module>
-    <module>client/core</module>
-    <!-- authenticators -->
+    <!--
+     | authenticators
+    -->
+    <module>client/auth/apis</module>
     <module>client/auth/http</module>
     <module>client/auth/ssl</module>
     <module>client/auth/um-sso</module>
+    <!--
+     | file transfer
+    -->
+    <module>client/transfer/http</module>
+    <!--
+     | core module
+    -->
+    <module>client/core</module>
   </modules>
 
   <properties>
