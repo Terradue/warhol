@@ -21,25 +21,25 @@
     <groupId>com.terradue.warhol</groupId>
     <artifactId>warhol-parent</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <relativePath>../../</relativePath>
+    <relativePath>../../../</relativePath>
   </parent>
 
-  <groupId>com.terradue.warhol.auth</groupId>
-  <artifactId>warhol-umsso-auth</artifactId>
+  <groupId>${project.parent.groupId}.client.auth</groupId>
+  <artifactId>warhol-http-auth</artifactId>
   <packaging>jar</packaging>
 
-  <name>T2 Warhol :: Authentication :: UM-SSO</name>
+  <name>T2 Warhol :: Authentication :: HTTP</name>
 
   <dependencies>
     <dependency>
-      <groupId>${project.parent.groupId}</groupId>
-      <artifactId>warhol-core</artifactId>
+      <groupId>${project.parent.groupId}.client</groupId>
+      <artifactId>warhol-client-core</artifactId>
       <version>${project.version}</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
-      <groupId>${project.parent.groupId}</groupId>
+      <groupId>${project.parent.groupId}.client</groupId>
       <artifactId>warhol-settings</artifactId>
       <version>${project.version}</version>
       <scope>provided</scope>
@@ -60,7 +60,7 @@
   <build>
     <resources>
       <resource>
-        <directory>${basedir}/../../</directory>
+        <directory>${basedir}/../../../</directory>
         <targetPath>META-INF</targetPath>
         <includes>
           <include>LICENSE</include>

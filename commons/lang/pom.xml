@@ -21,13 +21,14 @@
     <groupId>com.terradue.warhol</groupId>
     <artifactId>warhol-parent</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <relativePath>../</relativePath>
+    <relativePath>../../</relativePath>
   </parent>
 
-  <artifactId>warhol-feeds</artifactId>
+  <groupId>${project.parent.groupId}.commons</groupId>
+  <artifactId>warhol-lang</artifactId>
   <packaging>jar</packaging>
 
-  <name>T2 Warhol :: Atom/OpenSearch Feeds APIs</name>
+  <name>T2 Warhol :: Lang utilities</name>
 
   <build>
     <resources>
@@ -40,13 +41,6 @@
         </includes>
       </resource>
     </resources>
-
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>jaxb2-maven-plugin</artifactId>
-      </plugin>
-    </plugins>
   </build>
 
 </project>

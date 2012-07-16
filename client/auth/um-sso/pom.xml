@@ -21,67 +21,46 @@
     <groupId>com.terradue.warhol</groupId>
     <artifactId>warhol-parent</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <relativePath>../</relativePath>
+    <relativePath>../../../</relativePath>
   </parent>
 
-  <artifactId>warhol-core</artifactId>
+  <groupId>${project.parent.groupId}.client.auth</groupId>
+  <artifactId>warhol-umsso-auth</artifactId>
   <packaging>jar</packaging>
 
-  <name>T2 Warhol :: Core engine</name>
+  <name>T2 Warhol :: Authentication :: UM-SSO</name>
 
   <dependencies>
     <dependency>
-      <groupId>javax.inject</groupId>
-      <artifactId>javax.inject</artifactId>
-      <version>1</version>
-    </dependency>
-
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>warhol-lang</artifactId>
+      <groupId>${project.parent.groupId}.client</groupId>
+      <artifactId>warhol-client-core</artifactId>
       <version>${project.version}</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>warhol-feeds</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>${project.groupId}</groupId>
+      <groupId>${project.parent.groupId}.client</groupId>
       <artifactId>warhol-settings</artifactId>
       <version>${project.version}</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>warhol-url-template</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.sun.jersey</groupId>
-      <artifactId>jersey-client</artifactId>
-      <version>1.13-b01</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.sonatype.spice</groupId>
-      <artifactId>jersey-ahc-client</artifactId>
-      <version>1.0.2</version>
+      <groupId>org.kohsuke.metainf-services</groupId>
+      <artifactId>metainf-services</artifactId>
     </dependency>
 
     <dependency>
       <groupId>com.ning</groupId>
       <artifactId>async-http-client</artifactId>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 
   <build>
     <resources>
       <resource>
-        <directory>${basedir}/..</directory>
+        <directory>${basedir}/../../../</directory>
         <targetPath>META-INF</targetPath>
         <includes>
           <include>LICENSE</include>

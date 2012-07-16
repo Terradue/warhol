@@ -21,15 +21,22 @@
     <groupId>com.terradue.warhol</groupId>
     <artifactId>warhol-parent</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <relativePath>../</relativePath>
+    <relativePath>../../</relativePath>
   </parent>
 
-  <artifactId>warhol-url-template</artifactId>
+  <groupId>${project.parent.groupId}.client</groupId>
+  <artifactId>warhol-client-core</artifactId>
   <packaging>jar</packaging>
 
-  <name>T2 Warhol :: URL Template</name>
+  <name>T2 Warhol :: Core engine</name>
 
   <dependencies>
+    <dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+      <version>1</version>
+    </dependency>
+
     <dependency>
       <groupId>${project.parent.groupId}.commons</groupId>
       <artifactId>warhol-lang</artifactId>
@@ -37,8 +44,38 @@
     </dependency>
 
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
+      <groupId>${project.parent.groupId}.commons</groupId>
+      <artifactId>warhol-feeds</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>warhol-settings</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>${project.parent.groupId}</groupId>
+      <artifactId>warhol-url-template</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-client</artifactId>
+      <version>1.13-b01</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.sonatype.spice</groupId>
+      <artifactId>jersey-ahc-client</artifactId>
+      <version>1.0.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.ning</groupId>
+      <artifactId>async-http-client</artifactId>
     </dependency>
   </dependencies>
 
