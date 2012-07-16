@@ -28,7 +28,7 @@
   <artifactId>warhol-feeds</artifactId>
   <packaging>jar</packaging>
 
-  <name>T2 Warhol :: Atom/OpenSearch Feeds APIs</name>
+  <name>T2 Warhol :: Commons :: Atom/OpenSearch Feeds APIs</name>
 
   <build>
     <resources>

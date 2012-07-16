@@ -28,7 +28,7 @@
   <artifactId>warhol-lang</artifactId>
   <packaging>jar</packaging>
 
-  <name>T2 Warhol :: Lang utilities</name>
+  <name>T2 Warhol :: Commons :: Lang utilities</name>
 
   <build>
     <resources>
