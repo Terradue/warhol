@@ -1,7 +1,4 @@
-/**
- * Products download transfer APIs.
- */
-package com.terradue.warhol.transfer;
+package com.terradue.warhol.client.transfer;
 
 /*
  *    Copyright 2011-2012 Terradue srl
@@ -18,3 +15,21 @@ package com.terradue.warhol.transfer;
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
+
+public class TransferCancelledException
+    extends TransferException
+{
+
+    private static final long serialVersionUID = 2755867836442279828L;
+
+    public TransferCancelledException( String messagePattern, Object... arguments )
+    {
+        super( messagePattern, arguments );
+    }
+
+    public TransferCancelledException( String message, Throwable cause )
+    {
+        super( message, cause );
+    }
+
+}

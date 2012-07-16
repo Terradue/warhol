@@ -1,4 +1,8 @@
-package com.terradue.warhol.transfer;
+package com.terradue.warhol.client.transfer;
+
+import java.io.File;
+
+import com.terradue.warhol.settings.RemoteStorage;
 
 /*
  *    Copyright 2011-2012 Terradue srl
@@ -16,18 +20,13 @@ package com.terradue.warhol.transfer;
  *    limitations under the License.
  */
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Documented
-@Retention( RetentionPolicy.RUNTIME )
-@Target( ElementType.TYPE )
-public @interface Protocol
+public interface Transferrer
 {
 
-    String[] value();
+    void init( RemoteStorage remoteStorage );
+
+    String[] supportedProtocols();
+
+    File transfer( String fileLocation, File targetDir );
 
 }

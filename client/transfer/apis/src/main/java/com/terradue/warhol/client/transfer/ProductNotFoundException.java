@@ -1,4 +1,4 @@
-package com.terradue.warhol.transfer;
+package com.terradue.warhol.client.transfer;
 
 /*
  *    Copyright 2011-2012 Terradue srl
@@ -16,10 +16,8 @@ package com.terradue.warhol.transfer;
  *    limitations under the License.
  */
 
-import com.terradue.warhol.CatalogueException;
-
 final class ProductNotFoundException
-    extends CatalogueException
+    extends TransferException
 {
 
     private static final long serialVersionUID = 6023477713928929541L;
