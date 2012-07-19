@@ -80,6 +80,7 @@
      | core module
     -->
     <module>client/core</module>
+    <module>client/cli</module>
   </modules>
 
   <properties>
