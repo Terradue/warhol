@@ -46,6 +46,12 @@
     </dependency>
 
     <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.0.6</version>
+    </dependency>
+
+    <dependency>
       <groupId>com.ning</groupId>
       <artifactId>async-http-client</artifactId>
       <scope>provided</scope>
@@ -105,6 +111,10 @@
           <include>NOTICE</include>
         </includes>
       </resource>
+
+      <resource>
+        <directory>${basedir}/src/main/resources</directory>
+      </resource>
     </resources>
 
     <plugins>
@@ -123,7 +133,7 @@
         <configuration>
           <repositoryLayout>flat</repositoryLayout>
           <repositoryName>lib</repositoryName>
-          <extraJvmArguments>-Xms500m -Xmx500m -XX:PermSize=128m -XX:-UseGCOverheadLimit</extraJvmArguments>
+          <extraJvmArguments>-Dwarhol.version=${project.version} -Xms500m -Xmx500m -XX:PermSize=128m -XX:-UseGCOverheadLimit</extraJvmArguments>
           <programs>
             <program>
               <mainClass>com.terradue.warhol.client.cli</mainClass>
