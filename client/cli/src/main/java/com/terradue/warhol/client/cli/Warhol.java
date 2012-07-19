@@ -94,12 +94,12 @@ public final class Warhol
 
         if ( !settingsFile.exists() )
         {
-            out.printf( "Specified settings file %s does not exist, please specify a valid one.", settingsFile );
+            out.printf( "Specified settings file %s does not exist, please specify a valid one.%n", settingsFile );
             return 1;
         }
         else if ( settingsFile.isDirectory() )
         {
-            out.printf( "Specified settings file %s must not be a directory.", settingsFile );
+            out.printf( "Specified settings file %s must not be a directory.%n", settingsFile );
             return 1;
         }
 
