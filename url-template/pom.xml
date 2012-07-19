@@ -31,7 +31,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>${project.parent.groupId}.commons</groupId>
+      <groupId>com.terradue.warhol.commons</groupId>
       <artifactId>warhol-lang</artifactId>
       <version>${project.version}</version>
     </dependency>

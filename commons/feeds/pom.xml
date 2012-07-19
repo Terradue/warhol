@@ -24,7 +24,7 @@
     <relativePath>../../</relativePath>
   </parent>
 
-  <groupId>${project.parent.groupId}.commons</groupId>
+  <groupId>com.terradue.warhol.commons</groupId>
   <artifactId>warhol-feeds</artifactId>
   <packaging>jar</packaging>
 

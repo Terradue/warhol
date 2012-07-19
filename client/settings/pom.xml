@@ -24,7 +24,7 @@
     <relativePath>../../</relativePath>
   </parent>
 
-  <groupId>${project.parent.groupId}.client</groupId>
+  <groupId>com.terradue.warhol.client</groupId>
   <artifactId>warhol-settings</artifactId>
   <packaging>jar</packaging>
 

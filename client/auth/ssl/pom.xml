@@ -24,7 +24,7 @@
     <relativePath>../../../</relativePath>
   </parent>
 
-  <groupId>${project.parent.groupId}.client.auth</groupId>
+  <groupId>com.terradue.warhol.client.auth</groupId>
   <artifactId>warhol-ssl-auth</artifactId>
   <packaging>jar</packaging>
 
@@ -32,21 +32,21 @@
 
   <dependencies>
     <dependency>
-      <groupId>${project.parent.groupId}.commons</groupId>
+      <groupId>com.terradue.warhol.commons</groupId>
       <artifactId>warhol-lang</artifactId>
       <version>${project.version}</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
-      <groupId>${project.parent.groupId}.client.auth</groupId>
+      <groupId>com.terradue.warhol.client.auth</groupId>
       <artifactId>warhol-auth-apis</artifactId>
       <version>${project.version}</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
-      <groupId>${project.parent.groupId}.client</groupId>
+      <groupId>com.terradue.warhol.client</groupId>
       <artifactId>warhol-settings</artifactId>
       <version>${project.version}</version>
       <scope>provided</scope>

@@ -24,7 +24,7 @@
     <relativePath>../../</relativePath>
   </parent>
 
-  <groupId>${project.parent.groupId}.client</groupId>
+  <groupId>com.terradue.warhol.client</groupId>
   <artifactId>warhol-client-core</artifactId>
   <packaging>jar</packaging>
 
@@ -32,37 +32,37 @@
 
   <dependencies>
     <dependency>
-      <groupId>${project.parent.groupId}.commons</groupId>
+      <groupId>com.terradue.warhol.commons</groupId>
       <artifactId>warhol-lang</artifactId>
       <version>${project.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>${project.parent.groupId}.commons</groupId>
+      <groupId>com.terradue.warhol.commons</groupId>
       <artifactId>warhol-feeds</artifactId>
       <version>${project.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>${project.groupId}</groupId>
+      <groupId>com.terradue.warhol.client</groupId>
       <artifactId>warhol-settings</artifactId>
       <version>${project.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>${project.groupId}</groupId>
+      <groupId>com.terradue.warhol.client</groupId>
       <artifactId>warhol-ahc-configurator</artifactId>
       <version>${project.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>${project.groupId}.auth</groupId>
+      <groupId>com.terradue.warhol.client.auth</groupId>
       <artifactId>warhol-auth-apis</artifactId>
       <version>${project.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>${project.parent.groupId}</groupId>
+      <groupId>com.terradue.warhol</groupId>
       <artifactId>warhol-url-template</artifactId>
       <version>${project.version}</version>
     </dependency>

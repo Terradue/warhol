@@ -24,7 +24,7 @@
     <relativePath>../../../</relativePath>
   </parent>
 
-  <groupId>${project.parent.groupId}.client.transfer</groupId>
+  <groupId>com.terradue.warhol.client.transfer</groupId>
   <artifactId>warhol-transfer-apis</artifactId>
   <packaging>jar</packaging>
 
@@ -38,13 +38,13 @@
     </dependency>
 
     <dependency>
-      <groupId>${project.parent.groupId}.commons</groupId>
+      <groupId>com.terradue.warhol.commons</groupId>
       <artifactId>warhol-lang</artifactId>
       <version>${project.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>${project.parent.groupId}.client</groupId>
+      <groupId>com.terradue.warhol.client</groupId>
       <artifactId>warhol-settings</artifactId>
       <version>${project.version}</version>
     </dependency>
