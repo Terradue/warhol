@@ -1,4 +1,4 @@
-package com.terradue.warhol;
+package com.terradue.warhol.client;
 
 /*
  *    Copyright 2011-2012 Terradue srl

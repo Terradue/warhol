@@ -1,4 +1,4 @@
-package com.terradue.warhol.traverse;
+package com.terradue.warhol.client.traverse;
 
 /*
  *    Copyright 2011-2012 Terradue srl
@@ -16,9 +16,9 @@ package com.terradue.warhol.traverse;
  *    limitations under the License.
  */
 
-public interface LocalStorageTraverseHandlerBuilder
+public interface CatalogueTraverseHandlerBuilder
 {
 
-    void with( LocalStorageTraverseHandler handler );
+    void with( CatalogueTraverseHandler traverseHandler );
 
 }

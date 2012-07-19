@@ -1,4 +1,4 @@
-package com.terradue.warhol;
+package com.terradue.warhol.client.traverse;
 
 /*
  *    Copyright 2011-2012 Terradue srl
@@ -16,24 +16,22 @@ package com.terradue.warhol;
  *    limitations under the License.
  */
 
-import static com.terradue.warhol.client.ahc.AhcConfigurator.getAhcConfiguratorInstance;
-import static org.sonatype.spice.jersey.client.ahc.AhcHttpClient.create;
+import java.io.File;
 
-import org.sonatype.spice.jersey.client.ahc.config.DefaultAhcConfig;
-
-import com.sun.jersey.api.client.Client;
-import com.terradue.warhol.settings.DataSource;
-
-final class RestClientFactory
+public abstract class BaseLocalStorageTraverseHandler
+    implements LocalStorageTraverseHandler
 {
 
-    public static Client newRestClient( DataSource dataSource )
+    @Override
+    public void onDirectory( File directory )
     {
-        DefaultAhcConfig config = new DefaultAhcConfig();
+        // do nothing
+    }
 
-        getAhcConfiguratorInstance().configure( config.getAsyncHttpClientConfigBuilder(), dataSource );
-
-        return create( config );
+    @Override
+    public void onFile( File file )
+    {
+        // do nothing
     }
 
 }

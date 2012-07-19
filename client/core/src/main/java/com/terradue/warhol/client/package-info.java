@@ -1,4 +1,7 @@
-package com.terradue.warhol.traverse;
+/**
+ * Main Catalogue APIs.
+ */
+package com.terradue.warhol.client;
 
 /*
  *    Copyright 2011-2012 Terradue srl
@@ -15,14 +18,3 @@ package com.terradue.warhol.traverse;
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-
-import org.w3._2005.atom.Entry;
-
-public interface CatalogueTraverseHandler
-{
-
-    void onSeries( Entry series );
-
-    void onDataSet( Entry product );
-
-}

@@ -1,7 +1,7 @@
 /**
- * Main Catalogue APIs.
+ * Catalogue traversal APIs.
  */
-package com.terradue.warhol;
+package com.terradue.warhol.client.traverse;
 
 /*
  *    Copyright 2011-2012 Terradue srl

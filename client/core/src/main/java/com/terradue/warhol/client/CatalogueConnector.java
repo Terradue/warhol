@@ -1,4 +1,4 @@
-package com.terradue.warhol;
+package com.terradue.warhol.client;
 
 /*
  *    Copyright 2011-2012 Terradue srl
@@ -16,13 +16,13 @@ package com.terradue.warhol;
  *    limitations under the License.
  */
 
-import static com.terradue.warhol.RestClientFactory.newRestClient;
 import static com.terradue.warhol.urltemplate.UrlTemplate.parseTemplate;
 
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.Set;
 
+import static com.terradue.warhol.client.RestClientFactory.newRestClient;
 import static com.terradue.warhol.lang.Preconditions.checkNotNullArgument;
 import static com.terradue.warhol.lang.Preconditions.checkState;
 
@@ -31,9 +31,9 @@ import org.w3._2005.atom.Feed;
 import com.a9.opensearch._11.OpenSearchDescription;
 import com.a9.opensearch._11.OpenSearchUrl;
 import com.sun.jersey.api.client.Client;
+import com.terradue.warhol.client.traverse.CatalogueTraverseHandler;
+import com.terradue.warhol.client.traverse.CatalogueTraverseHandlerBuilder;
 import com.terradue.warhol.settings.Catalogue;
-import com.terradue.warhol.traverse.CatalogueTraverseHandler;
-import com.terradue.warhol.traverse.CatalogueTraverseHandlerBuilder;
 import com.terradue.warhol.urltemplate.UrlTemplate;
 
 public final class CatalogueConnector

@@ -1,4 +1,4 @@
-package com.terradue.warhol;
+package com.terradue.warhol.client;
 
 /*
  *    Copyright 2011-2012 Terradue srl
@@ -16,14 +16,24 @@ package com.terradue.warhol;
  *    limitations under the License.
  */
 
-import com.terradue.warhol.settings.RemoteStorage;
+import static com.terradue.warhol.client.ahc.AhcConfigurator.getAhcConfiguratorInstance;
+import static org.sonatype.spice.jersey.client.ahc.AhcHttpClient.create;
 
-public final class RemoteStorageConnector
+import org.sonatype.spice.jersey.client.ahc.config.DefaultAhcConfig;
+
+import com.sun.jersey.api.client.Client;
+import com.terradue.warhol.settings.DataSource;
+
+final class RestClientFactory
 {
 
-    public RemoteStorageConnector( RemoteStorage remoteStorage )
+    public static Client newRestClient( DataSource dataSource )
     {
-        // TODO
+        DefaultAhcConfig config = new DefaultAhcConfig();
+
+        getAhcConfiguratorInstance().configure( config.getAsyncHttpClientConfigBuilder(), dataSource );
+
+        return create( config );
     }
 
 }

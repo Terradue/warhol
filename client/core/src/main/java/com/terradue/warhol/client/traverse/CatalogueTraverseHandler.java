@@ -1,4 +1,4 @@
-package com.terradue.warhol.traverse;
+package com.terradue.warhol.client.traverse;
 
 /*
  *    Copyright 2011-2012 Terradue srl
@@ -16,22 +16,13 @@ package com.terradue.warhol.traverse;
  *    limitations under the License.
  */
 
-import java.io.File;
+import org.w3._2005.atom.Entry;
 
-public abstract class BaseLocalStorageTraverseHandler
-    implements LocalStorageTraverseHandler
+public interface CatalogueTraverseHandler
 {
 
-    @Override
-    public void onDirectory( File directory )
-    {
-        // do nothing
-    }
+    void onSeries( Entry series );
 
-    @Override
-    public void onFile( File file )
-    {
-        // do nothing
-    }
+    void onDataSet( Entry product );
 
 }

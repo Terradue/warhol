@@ -1,4 +1,4 @@
-package com.terradue.warhol.traverse;
+package com.terradue.warhol.client.traverse;
 
 /*
  *    Copyright 2011-2012 Terradue srl

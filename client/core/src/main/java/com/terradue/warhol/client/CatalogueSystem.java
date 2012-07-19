@@ -1,4 +1,4 @@
-package com.terradue.warhol;
+package com.terradue.warhol.client;
 
 /*
  *    Copyright 2011-2012 Terradue srl
@@ -22,10 +22,10 @@ import static com.terradue.warhol.lang.Preconditions.checkNotNullArgument;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.terradue.warhol.client.traverse.CatalogueTraverseHandler;
+import com.terradue.warhol.client.traverse.CatalogueTraverseHandlerBuilder;
 import com.terradue.warhol.settings.Catalogue;
 import com.terradue.warhol.settings.Settings;
-import com.terradue.warhol.traverse.CatalogueTraverseHandler;
-import com.terradue.warhol.traverse.CatalogueTraverseHandlerBuilder;
 
 public final class CatalogueSystem
 {

@@ -1,4 +1,4 @@
-package com.terradue.warhol;
+package com.terradue.warhol.client;
 
 /*
  *    Copyright 2011-2012 Terradue srl
@@ -22,9 +22,9 @@ import static com.terradue.warhol.lang.Preconditions.checkState;
 
 import java.io.File;
 
+import com.terradue.warhol.client.traverse.LocalStorageTraverseHandler;
+import com.terradue.warhol.client.traverse.LocalStorageTraverseHandlerBuilder;
 import com.terradue.warhol.settings.LocalStorage;
-import com.terradue.warhol.traverse.LocalStorageTraverseHandler;
-import com.terradue.warhol.traverse.LocalStorageTraverseHandlerBuilder;
 
 public final class LocalStorageConnector
 {
