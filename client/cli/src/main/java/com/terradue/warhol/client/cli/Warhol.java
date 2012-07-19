@@ -64,7 +64,7 @@ public final class Warhol
         description = "Force the use of an alternate settings file.",
         converter = FileConverter.class
     )
-    private File settingsFile = new File( getProperty( "basedir" ), "settings.xml" );
+    private File settingsFile = new File( getProperty( "basedir" ), "etc/settings.xml" );
 
     public int execute( String...args )
     {
