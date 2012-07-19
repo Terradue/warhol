@@ -136,7 +136,7 @@
           <extraJvmArguments>-Dwarhol.version=${project.version} -Xms500m -Xmx500m -XX:PermSize=128m -XX:-UseGCOverheadLimit</extraJvmArguments>
           <programs>
             <program>
-              <mainClass>com.terradue.warhol.client.cli</mainClass>
+              <mainClass>com.terradue.warhol.client.cli.Warhol</mainClass>
               <name>wrh</name>
             </program>
           </programs>
