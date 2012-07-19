@@ -36,9 +36,9 @@ import com.ning.http.client.RequestBuilder;
 import com.ning.http.client.filter.FilterContext;
 import com.ning.http.client.filter.FilterException;
 import com.ning.http.client.filter.ResponseFilter;
-import com.terradue.warhol.settings.HttpMethod;
-import com.terradue.warhol.settings.UmSsoAuthentication;
-import com.terradue.warhol.settings.UmSsoParameter;
+import com.terradue.warhol.client.settings.HttpMethod;
+import com.terradue.warhol.client.settings.UmSsoAuthentication;
+import com.terradue.warhol.client.settings.UmSsoParameter;
 
 /**
  *

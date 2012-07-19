@@ -106,6 +106,55 @@
         </includes>
       </resource>
     </resources>
+
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>appassembler-maven-plugin</artifactId>
+        <version>1.1.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>assemble</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <repositoryLayout>flat</repositoryLayout>
+          <repositoryName>lib</repositoryName>
+          <extraJvmArguments>-Xms500m -Xmx500m -XX:PermSize=128m -XX:-UseGCOverheadLimit</extraJvmArguments>
+          <programs>
+            <program>
+              <mainClass>com.terradue.warhol.client.cli</mainClass>
+              <name>wrh</name>
+            </program>
+          </programs>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <attach>true</attach>
+          <tarLongFileMode>gnu</tarLongFileMode>
+          <appendAssemblyId>false</appendAssemblyId>
+          <descriptors>
+            <descriptor>${basedir}/src/main/assembly/bin.xml</descriptor>
+          </descriptors>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 
 </project>

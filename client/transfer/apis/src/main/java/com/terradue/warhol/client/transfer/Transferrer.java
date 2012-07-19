@@ -2,7 +2,7 @@ package com.terradue.warhol.client.transfer;
 
 import java.io.File;
 
-import com.terradue.warhol.settings.RemoteStorage;
+import com.terradue.warhol.client.settings.RemoteStorage;
 
 /*
  *    Copyright 2011-2012 Terradue srl

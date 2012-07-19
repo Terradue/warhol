@@ -25,9 +25,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import com.ning.http.client.AsyncHttpClientConfig.Builder;
 import com.ning.http.client.resumable.ResumableIOExceptionFilter;
 import com.terradue.warhol.auth.AuthenticationConfiguration;
-import com.terradue.warhol.settings.Authentication;
-import com.terradue.warhol.settings.DataSource;
-import com.terradue.warhol.settings.HttpSettings;
+import com.terradue.warhol.client.settings.Authentication;
+import com.terradue.warhol.client.settings.DataSource;
+import com.terradue.warhol.client.settings.HttpSettings;
 
 public final class AhcConfigurator
 {

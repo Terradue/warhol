@@ -22,10 +22,10 @@ import static com.terradue.warhol.lang.Preconditions.checkNotNullArgument;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.terradue.warhol.client.settings.Catalogue;
+import com.terradue.warhol.client.settings.Settings;
 import com.terradue.warhol.client.traverse.CatalogueTraverseHandler;
 import com.terradue.warhol.client.traverse.CatalogueTraverseHandlerBuilder;
-import com.terradue.warhol.settings.Catalogue;
-import com.terradue.warhol.settings.Settings;
 
 public final class CatalogueSystem
 {

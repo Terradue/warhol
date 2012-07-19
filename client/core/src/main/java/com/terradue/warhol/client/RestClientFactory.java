@@ -22,7 +22,7 @@ import static org.sonatype.spice.jersey.client.ahc.AhcHttpClient.create;
 import org.sonatype.spice.jersey.client.ahc.config.DefaultAhcConfig;
 
 import com.sun.jersey.api.client.Client;
-import com.terradue.warhol.settings.DataSource;
+import com.terradue.warhol.client.settings.DataSource;
 
 final class RestClientFactory
 {

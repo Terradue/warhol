@@ -26,10 +26,10 @@ import org.slf4j.Logger;
 
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.AsyncHttpClientConfig.Builder;
+import com.terradue.warhol.client.settings.RemoteStorage;
 import com.terradue.warhol.client.transfer.BaseTransferrer;
 import com.terradue.warhol.client.transfer.TransferCancelledException;
 import com.terradue.warhol.client.transfer.Transferrer;
-import com.terradue.warhol.settings.RemoteStorage;
 
 @MetaInfServices( Transferrer.class )
 public final class HttpTransferrer

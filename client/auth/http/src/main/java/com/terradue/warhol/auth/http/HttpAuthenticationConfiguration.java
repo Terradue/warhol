@@ -18,11 +18,11 @@ package com.terradue.warhol.auth.http;
 
 import org.kohsuke.MetaInfServices;
 
-import com.ning.http.client.Realm;
 import com.ning.http.client.AsyncHttpClientConfig.Builder;
+import com.ning.http.client.Realm;
 import com.ning.http.client.Realm.AuthScheme;
 import com.terradue.warhol.auth.AuthenticationConfiguration;
-import com.terradue.warhol.settings.HttpAuthentication;
+import com.terradue.warhol.client.settings.HttpAuthentication;
 
 @MetaInfServices
 public final class HttpAuthenticationConfiguration

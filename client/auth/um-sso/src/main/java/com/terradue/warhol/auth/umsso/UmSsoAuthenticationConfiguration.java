@@ -20,7 +20,7 @@ import org.kohsuke.MetaInfServices;
 
 import com.ning.http.client.AsyncHttpClientConfig.Builder;
 import com.terradue.warhol.auth.AuthenticationConfiguration;
-import com.terradue.warhol.settings.UmSsoAuthentication;
+import com.terradue.warhol.client.settings.UmSsoAuthentication;
 
 @MetaInfServices
 public final class UmSsoAuthenticationConfiguration

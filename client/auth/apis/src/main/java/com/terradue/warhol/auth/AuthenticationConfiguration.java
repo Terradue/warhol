@@ -17,7 +17,7 @@ package com.terradue.warhol.auth;
  */
 
 import com.ning.http.client.AsyncHttpClientConfig.Builder;
-import com.terradue.warhol.settings.Authentication;
+import com.terradue.warhol.client.settings.Authentication;
 
 public interface AuthenticationConfiguration<A extends Authentication>
 {

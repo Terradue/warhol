@@ -16,7 +16,7 @@ package com.terradue.warhol.client;
  *    limitations under the License.
  */
 
-import com.terradue.warhol.settings.RemoteStorage;
+import com.terradue.warhol.client.settings.RemoteStorage;
 
 public final class RemoteStorageConnector
 {

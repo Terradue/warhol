@@ -22,9 +22,9 @@ import static com.terradue.warhol.lang.Preconditions.checkState;
 
 import java.io.File;
 
+import com.terradue.warhol.client.settings.LocalStorage;
 import com.terradue.warhol.client.traverse.LocalStorageTraverseHandler;
 import com.terradue.warhol.client.traverse.LocalStorageTraverseHandlerBuilder;
-import com.terradue.warhol.settings.LocalStorage;
 
 public final class LocalStorageConnector
 {

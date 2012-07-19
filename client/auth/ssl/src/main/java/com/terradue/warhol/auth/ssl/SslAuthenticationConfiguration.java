@@ -31,7 +31,7 @@ import org.kohsuke.MetaInfServices;
 
 import com.ning.http.client.AsyncHttpClientConfig.Builder;
 import com.terradue.warhol.auth.AuthenticationConfiguration;
-import com.terradue.warhol.settings.SslAuthentication;
+import com.terradue.warhol.client.settings.SslAuthentication;
 
 @MetaInfServices
 public final class SslAuthenticationConfiguration
