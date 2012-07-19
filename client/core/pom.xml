@@ -62,6 +62,12 @@
     </dependency>
 
     <dependency>
+      <groupId>com.terradue.warhol.client.transfer</groupId>
+      <artifactId>warhol-transfer-apis</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>com.terradue.warhol</groupId>
       <artifactId>warhol-url-template</artifactId>
       <version>${project.version}</version>
