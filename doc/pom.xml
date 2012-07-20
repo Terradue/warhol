@@ -37,4 +37,28 @@
     </site>
   </distributionManagement>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.7</version>
+        <executions>
+          <execution>
+            <id>xsd</id>
+            <phase>post-site</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <copy file="${basedir}/../client/settings/src/main/xsd/settings.xsd" tofile="${project.reporting.outputDirectory}/xsd/${project.version}/settings.xsd" />
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
