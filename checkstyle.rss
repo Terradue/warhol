@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>T2 Warhol :: Doc - Checkstyle report</title>
+    <link>http://terradue.github.com/warhol/warhol-doc/</link>
+    <description>T2 Warhol :: Doc - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2011 - 2012 Terradue s.r.l.</copyright>
+    <item>
+      <title>File: 0,
+             Errors: 0,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://terradue.github.com/warhol/warhol-doc//checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://terradue.github.com/warhol/warhol-doc//checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

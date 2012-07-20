@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright 2011-2012 Terradue srl
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.terradue.com/warhol/client/settings"
+           xmlns="http://www.terradue.com/warhol/client/settings">
+
+  <!-- ===== Main settings ===== -->
+
+  <xs:complexType name="Settings">
+    <xs:sequence>
+      <xs:element name="storages" type="Storages" minOccurs="0" maxOccurs="1" />
+      <xs:element name="catalogues" type="Catalogues" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DataSource">
+    <xs:sequence>
+      <xs:element name="http-settings" type="HttpSettings" minOccurs="1" maxOccurs="1" />
+      <xs:element name="authentications" type="Authentications" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ===== HTTP settings ===== -->
+
+  <xs:complexType name="HttpSettings">
+    <xs:sequence>
+      <xs:element name="catalogue" type="Catalogue" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element name="connection-timeout" type="xs:unsignedShort" minOccurs="0" maxOccurs="1" default="2" />
+      <xs:element name="allow-pooling-connection" type="xs:boolean" minOccurs="0" maxOccurs="1" default="true" />
+      <xs:element name="follow-redirects" type="xs:boolean" minOccurs="0" maxOccurs="1" default="true" />
+      <xs:element name="host-maximum-connection" type="xs:unsignedShort" minOccurs="0" maxOccurs="1" default="5" />
+      <xs:element name="total-maximum-connection" type="xs:unsignedShort" minOccurs="0" maxOccurs="1" default="5" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ===== Catalogues ===== -->
+
+  <xs:complexType name="Catalogues">
+    <xs:sequence>
+      <xs:element name="catalogue" type="Catalogue" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Catalogue">
+    <xs:complexContent>
+      <xs:extension base="DataSource">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="description-url" type="xs:string" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- ===== Storages ===== -->
+
+  <xs:complexType name="Storages">
+    <xs:sequence>
+      <xs:element name="local" type="LocalStorage" minOccurs="1" maxOccurs="1" />
+      <xs:element name="remote" type="RemoteStorage" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--
+   | Local Storage
+  -->
+  <xs:complexType name="LocalStorage">
+    <xs:sequence>
+      <xs:element name="base-dir" type="xs:string" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--
+   | Remote Storage
+  -->
+  <xs:complexType name="RemoteStorage">
+    <xs:complexContent>
+      <xs:extension base="DataSource">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="domain" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- ===== Authentication ===== -->
+
+  <xs:complexType name="Authentications">
+    <xs:sequence>
+      <xs:element name="authentication" type="Authentication" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Authentication" />
+
+  <!--
+   | SSL Authentication
+  -->
+  <xs:complexType name="SslAuthentication">
+    <xs:complexContent>
+      <xs:extension base="Authentication">
+        <xs:sequence>
+          <xs:element name="proxy-certificate" type="xs:string" minOccurs="0" maxOccurs="1" />
+          <xs:element name="private-key" type="xs:string" minOccurs="0" maxOccurs="1" />
+          <xs:element name="public-certificate" type="xs:string" minOccurs="0" maxOccurs="1" />
+          <xs:element name="password" type="xs:string" minOccurs="0" maxOccurs="1" />
+          <xs:element name="check-certificate" type="xs:boolean" minOccurs="0" maxOccurs="1" default="false" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!--
+    | HTTP Authentication
+  -->
+  <xs:simpleType name="HttpAuthenticationScheme">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BASIC" />
+      <xs:enumeration value="DIGEST" />
+      <xs:enumeration value="KERBEROS" />
+      <xs:enumeration value="NONE" />
+      <xs:enumeration value="NTLM" />
+      <xs:enumeration value="SPNEGO" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="HttpAuthentication">
+    <xs:complexContent>
+      <xs:extension base="Authentication">
+        <xs:sequence>
+          <xs:element name="username" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="password" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="preemptive" type="xs:boolean" minOccurs="0" maxOccurs="1" default="true" />
+          <xs:element name="scheme" type="HttpAuthenticationScheme" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!--
+    | UM-SSO Authentication
+  -->
+  <xs:simpleType name="HttpMethod">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OPTIONS" />
+      <xs:enumeration value="GET" />
+      <xs:enumeration value="HEAD" />
+      <xs:enumeration value="POST" />
+      <xs:enumeration value="PUT" />
+      <xs:enumeration value="DELETE" />
+      <xs:enumeration value="TRACE" />
+      <xs:enumeration value="CONNECT" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="UmSsoParameter">
+    <xs:attribute name="name" type="xs:string" />
+    <xs:attribute name="value" type="xs:string" />
+  </xs:complexType>
+
+  <xs:complexType name="UmSsoAuthentication">
+    <xs:complexContent>
+      <xs:extension base="Authentication">
+        <xs:sequence>
+          <xs:element name="login-form" type="xs:anyURI" minOccurs="1" maxOccurs="1" />
+          <xs:element name="method" type="HttpMethod" minOccurs="1" maxOccurs="1" />
+          <xs:element name="parameter" type="UmSsoParameter" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+</xs:schema>
