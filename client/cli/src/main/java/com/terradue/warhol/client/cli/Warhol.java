@@ -60,7 +60,7 @@ public final class Warhol
     private boolean debug;
 
     @Parameter(
-        names = { "-f", "--file" },
+        names = { "-s", "--settings" },
         description = "Force the use of an alternate settings file.",
         converter = FileConverter.class
     )
