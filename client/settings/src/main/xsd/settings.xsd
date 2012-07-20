@@ -102,7 +102,9 @@
 
   <xs:complexType name="Authentications">
     <xs:sequence>
-      <xs:element name="authentication" type="Authentication" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element name="ssl-authentication" type="SslAuthentication" minOccurs="0" maxOccurs="1" />
+      <xs:element name="http-authentication" type="HttpAuthentication" minOccurs="0" maxOccurs="1" />
+      <xs:element name="umsso-authentication" type="UmSsoAuthentication" minOccurs="0" maxOccurs="1" />
     </xs:sequence>
   </xs:complexType>
 
