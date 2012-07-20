@@ -37,12 +37,6 @@
     <developerConnection>scm:git:git+ssh://git@github.com/Terradue/warhol.git</developerConnection>
     <url>https://github.com/Terradue/warhol</url>
   </scm>
-  <distributionManagement>
-    <site>
-      <id>github</id>
-      <url>gitsite:git@github.com/Terradue/warhol.git</url>
-    </site>
-  </distributionManagement>
 
   <modules>
     <!--
@@ -81,6 +75,10 @@
     -->
     <module>client/core</module>
     <module>client/cli</module>
+    <!--
+     | Documentation site
+    -->
+    <module>doc</module>
   </modules>
 
   <properties>
