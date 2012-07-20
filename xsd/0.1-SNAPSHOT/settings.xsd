@@ -20,6 +20,7 @@
 
   <!-- ===== Main settings ===== -->
 
+  <xs:element name="settings" type="Settings" />
   <xs:complexType name="Settings">
     <xs:sequence>
       <xs:element name="storages" type="Storages" minOccurs="0" maxOccurs="1" />
