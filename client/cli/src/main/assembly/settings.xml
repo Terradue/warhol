@@ -22,6 +22,7 @@
     <local>
       <base-dir>/tmp</base-dir>
     </local>
+
     <remote>
       <id>VA4</id>
       <domain>eo-virtual-archive4.esa.int</domain>
