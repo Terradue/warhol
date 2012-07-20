@@ -40,8 +40,8 @@
   <xs:complexType name="HttpSettings">
     <xs:sequence>
       <xs:element name="connection-timeout" type="xs:unsignedShort" minOccurs="0" maxOccurs="1" default="2" />
-      <xs:element name="allow-pooling-connection" type="xs:boolean" minOccurs="0" maxOccurs="1" default="true" />
-      <xs:element name="follow-redirects" type="xs:boolean" minOccurs="0" maxOccurs="1" default="true" />
+      <xs:element name="allow-pooling-connection" type="xs:boolean" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="follow-redirects" type="xs:boolean" minOccurs="0" maxOccurs="1" default=""false"" />
       <xs:element name="host-maximum-connection" type="xs:unsignedShort" minOccurs="0" maxOccurs="1" default="5" />
       <xs:element name="total-maximum-connection" type="xs:unsignedShort" minOccurs="0" maxOccurs="1" default="5" />
     </xs:sequence>
