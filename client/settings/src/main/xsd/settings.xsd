@@ -30,6 +30,7 @@
 
   <xs:complexType name="DataSource">
     <xs:sequence>
+      <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
       <xs:element name="http-settings" type="HttpSettings" minOccurs="1" maxOccurs="1" />
       <xs:element name="authentications" type="Authentications" minOccurs="0" maxOccurs="1" />
     </xs:sequence>
@@ -59,7 +60,6 @@
     <xs:complexContent>
       <xs:extension base="DataSource">
         <xs:sequence>
-          <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
           <xs:element name="description-url" type="xs:string" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
       </xs:extension>
@@ -91,7 +91,6 @@
     <xs:complexContent>
       <xs:extension base="DataSource">
         <xs:sequence>
-          <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
           <xs:element name="domain" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
       </xs:extension>
